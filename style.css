@@ -1,3 +1,11 @@
+*{
+font-family:"Inter",sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
 html, body{
 margin:0;
 padding:0;
@@ -9,6 +17,15 @@ min-height:100vh;
 position:relative;
 }
 #bg-video{
+position: absolute;
+top:0;
+left:0;
+width:100vw;
+height:100vh;
+object-fit:cover;
+z-index:-1;
+}
+#bg-video2{
 position: absolute;
 top:0;
 left:0;
@@ -40,7 +57,7 @@ overflow-x:hidden;
 
 
 background-size:40px 40px;
-height:200dvh;
+height:500dvh;
 
 
 }
@@ -128,8 +145,8 @@ height:200dvh;
     border-radius:10px;
     width:7.3rem;
     letter-spacing: -1px; /* adjust value as needed */
-    text-align:left;
-    padding-left:12px;
+    text-align:center;
+    
 
   
     animation:glow-anim 5s infinite ease-in-out;
@@ -236,12 +253,14 @@ height:200dvh;
 .menu-container {
   width: 320px;
   padding: 30px 25px;
-  background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+  background: linear-gradient(145deg, #0A0A0A #0a0a0a);
   border-radius: 20px;
   box-shadow: 0 0 40px rgba(255, 255, 255, 0.05);
   text-align: left;
   backdrop-filter: blur(6px);
-  animation: slideIn 0.5s ease forwards;
+  animation: Fade 1s ease forwards;
+  scale:0.9;
+  border:0.1px solid white;
 }
 
 .menu-header {
@@ -252,10 +271,31 @@ height:200dvh;
 }
 
 .menu-header h2 {
-  color: grey;
+background: linear-gradient(to bottom, #808080, #ffffff); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-gradient 3s infinite;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 1.6rem;
+}
+.menu-header h2:hover{
+  animation:translateY 0.5s ease;
+  
+  
+}
+@keyframes translateY{
+  0%{
+    
+  }
+  100%{
+    transform: translateY(-5px);
+    scale:1.1;
+  }
 }
 
 .close-btn {
@@ -296,12 +336,26 @@ height:200dvh;
   bottom: -5px;
   width: 0%;
   height: 2px;
-  background: linear-gradient(to right, #ff69b4, #33ccff);
+  background: linear-gradient(to right,  #040004,
+#521DCE,
+#140035,
+#2E1A8A,
+#250C6C,
+#3513A2,
+#521DCE,
+#2E1A8A);
   transition: width 0.4s;
 }
 
 .menu-list li a:hover {
-  color: white;
+  background: linear-gradient(to bottom, #808080, #ffffff); /* grey to white */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 3s infinite;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
 }
 
 .menu-list li a:hover::after {
@@ -433,10 +487,14 @@ animation:fadeDownUp 0.5s ease;
 
   background: linear-gradient(
     90deg,
-#1C0847,
-#3513A2,
-#521DCE,
-#A21335
+#EAF4FF,
+#D6EBFF,
+#B9DBFF,
+#93C7FF,
+#69B2F5,
+#3FA0EA,
+#E8EEF5,
+#FFFFFF
   );
 
   background-size: 400% 100%;
@@ -445,7 +503,7 @@ animation:fadeDownUp 0.5s ease;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 
-  animation: gradientShift 6s linear infinite;
+  animation: gradientShift 10s linear infinite;
 }
 
 @keyframes gradientShift{
@@ -462,9 +520,9 @@ animation:fadeDownUp 0.5s ease;
   font-family:"Inter",sans-serif;
   margin-top:20px;
   font-weight:400;
-  font-size: 45px;
+  font-size: 47px;
   margin-left: 20px;
-
+letter-spacing: -2px;
 }
 
 .software {
@@ -475,14 +533,13 @@ animation:fadeDownUp 0.5s ease;
   /* Correct gradient with commas */
   background: linear-gradient(
     to right,
-   #040004,
-#0B0014,
-#140035,
-#1C0847,
-#250C6C,
-#3513A2,
-#521DCE,
-#2E1A8A
+#2A0066,
+#3B008F,
+#4C00B8,
+#5F1DFF,
+#7B4DFF,
+#9A6BFF,
+#B58AFF
   );
 
   /* Gradient movement */
@@ -515,6 +572,7 @@ animation:fadeDownUp 0.5s ease;
 /* Paragraph text animation */
 .ptxt{
   margin-left:20px;
+  margin-top:-5px;
   color:#CACACA;
   line-height:1.6;
   font-family:"Inter",sans-serif;
@@ -532,13 +590,13 @@ animation:fadeDownUp 0.5s ease;
 /* Button styling */
 .bodybtn {
   width: 90%;
-  height: 46px;
+  height: 48px;
   border-radius: 15px;
   background-color: white;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 2px;
+  margin-top: 25px;
   border: none;
   font-family: "Inter", sans-serif;
   font-size: 1.01rem;
@@ -547,6 +605,37 @@ animation:fadeDownUp 0.5s ease;
   animation:fadeDownUp2 1.2s ease-in-out,
   glow-anim 5s infinite ease-in-out;
 }
+
+.docs {
+  width: 90%;
+  height: 48px;
+  border-radius: 15px;
+  background-color: #0a0a0a;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  position: relative;
+  cursor: pointer;
+  animation:fadeDownUp2 1.2s ease-in-out;
+  border:1px solid #2C2C33;
+  color:white;
+}
+
+.docs::after {
+  content: ">";
+  margin-left: 8px;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.docs:hover::after {
+  transform: translateX(4px);
+}
+
 
 /* Greater-than icon */
 .bodybtn::after {
@@ -580,4 +669,69 @@ animation:fadeDownUp 0.5s ease;
   0% { opacity: 0; transform: translateY(45px); }
   50% { opacity: 0; transform: translateY(15px); }
   100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes Fade {
+  0%{
+    opacity:0;
+  }
+  100%{
+    opacity:1;
+  }
+}
+
+#intro {
+  max-width: 80%;             /* video won’t exceed 80% of parent width */
+  width: 600px;               /* ideal fixed width on desktop */
+  height: auto;               /* maintain aspect ratio */
+  border: 0.1px solid grey;     /* optional border */
+  border-radius: 15px;         /* rounded corners */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); /* optional shadow */
+  display: block;             /* ensures proper layout */
+  margin: 0 auto;             /* center horizontally */
+  scale:1.2;
+  
+}
+
+
+
+
+/*ABOUT SECTION EFFECT GOES HERE*/
+.abouttxt{
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  font-family:"Inter",sans-serif;
+  font-weight:410;
+  font-size:2rem;
+  letter-spacing: -1px;
+}
+.aboutp{
+  color:grey;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  font-family:"Inter",sans-serif;
+  font-weight:410;
+  font-size:1rem;
+  letter-spacing: -1px;
+  
+}
+/* Default styles for small devices */
+
+/* Styles for big devices (e.g., desktops) */
+@media (min-width: 1024px) {
+  .maintxt{
+    justify-content:center;
+    align-items:center;
+    
+  }
+  .navbtn{
+    justify-content:right;
+  }
+
+#menu{
+    justify-content:right;
+  }
 }
