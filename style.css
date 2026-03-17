@@ -516,6 +516,7 @@ animation:fadeDownUp 0.5s ease;
 }
 
 .maintxt{
+  
   color:white;
   font-family:"Inter",sans-serif;
   margin-top:20px;
@@ -523,6 +524,7 @@ animation:fadeDownUp 0.5s ease;
   font-size: 47px;
   margin-left: 20px;
 letter-spacing: -2px;
+
 }
 
 .software {
@@ -723,17 +725,38 @@ letter-spacing: -2px;
 /* Styles for big devices (e.g., desktops) */
 @media (min-width: 1024px) {
   .maintxtdiv{
-display:flex;
-    justify-content:center;
-    align-items:center;
+  justify-content:center;
+  display:flex;
 }
-.nav1icons{
-display:flex;
-justify-content:right;
-}
-    
- 
+  .nav1icons{
+    display:flex;
+    justify-content:right;
+  }
+
 #menu{
     justify-content:right;
   }
 }
+@keyframes fade{
+  0%{
+    opacity:0;
+    visibility:hidden;
+  }
+  100%{
+    opacity:1;
+    visibility: display;
+  }
+}
+#bg-video {
+    transition: opacity 1s ease;
+    opacity: 1;
+  }
+
+  #bg-video.fade-out {
+    opacity: 0;
+  }
+
+  #bg-video.fade-in {
+    opacity: 1;
+  }
+  
