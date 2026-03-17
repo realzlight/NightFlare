@@ -835,7 +835,10 @@ letter-spacing: -2px;
 /* MEDIA QUERIRRESSSSS */
 /* Desktop-specific overrides */
 @media (min-width: 1024px) {
-
+.bodyboxdiv{
+display:flex;
+justify-content:center;
+}
   /* Center the whole block on desktop */
   .maintxtdiv {
     display: flex;
@@ -876,10 +879,7 @@ letter-spacing: -2px;
     margin-right: auto;
     text-align: center;
   }
-.bodyboxdiv{
-display:flex;
-justify-content:center;
-}
+
   /* Nav icons right side */
   .nav1icons {
     margin-left: auto;
