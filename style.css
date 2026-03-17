@@ -723,15 +723,40 @@ letter-spacing: -2px;
 /* Default styles for small devices */
 
 /* Styles for big devices (e.g., desktops) */
+/* Desktop specific styling */
 @media (min-width: 1024px) {
-  .maintxtdiv{
-  justify-content:center;
-  display:flex;
-}
-  .nav1icons{
-    display:flex;
-    justify-content:right;
+
+  /* Maintain txt block structure for desktop */
+  .maintxt {
+    font-size: 3rem; /* Adjust font size for desktop */
+    line-height: 1.2; /* Adjust spacing between lines */
+    white-space: normal; /* Prevent forced line breaks */
+    max-width: 700px; /* Optional: limit width */
+    margin-left: 20px; /* Align with content */
   }
+
+  /* Adjust the paragraph text for desktop */
+  .ptxt {
+    font-size: 1.1rem; 
+    max-width: 700px; /* Optional */
+    margin-left: 20px;
+    margin-top: 10px;
+  }
+
+  /* nav1icons aligned to the right with 20px margin */
+  .nav1icons {
+    margin-left: auto; /* Push to the right */
+    margin-right: 20px; /* 20px from edge */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* space between icons/buttons */
+  }
+
+  /* Adjust nav2 spacing if needed */
+  .nav2 {
+    padding-right: 20px;
+  }
+}
 
 #menu{
     justify-content:right;
