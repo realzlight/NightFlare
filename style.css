@@ -724,54 +724,28 @@ letter-spacing: -2px;
 
 /* Styles for big devices (e.g., desktops) */
 /* Desktop specific styling */
-@media (min-width: 1024px) {
+/* Base styles for mobile (default) */
+.maintxt {
+  font-size: 2rem;
+  text-align: center;
+  line-height: 1.3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  /* Maintain txt block structure for desktop */
-  .maintxt {
-    font-size: 3rem; /* Adjust font size for desktop */
-    line-height: 1.2; /* Adjust spacing between lines */
-    white-space: normal; /* Prevent forced line breaks */
-    max-width: 700px; /* Optional: limit width */
-    margin-left: 20px; /* Align with content */
-  }
+.maintxt span {
+  display: block;
+}
 
-  /* Adjust the paragraph text for desktop */
-  .ptxt {
-    font-size: 1.1rem; 
-    max-width: 700px; /* Optional */
-    margin-left: 20px;
-    margin-top: 10px;
-  }
-
+/* Desktop-specific overrides */  /* Adjust the paragraph text for desktop */
+  
   /* nav1icons aligned to the right with 20px margin */
-  .nav1icons {
-    margin-left: auto; /* Push to the right */
-    margin-right: 20px; /* 20px from edge */
-    display: flex;
-    align-items: center;
-    gap: 10px; /* space between icons/buttons */
-  }
+  
 
   /* Adjust nav2 spacing if needed */
-  .nav2 {
-    padding-right: 20px;
-  }
-}
 
-#menu{
-    justify-content:right;
-  }
-}
-@keyframes fade{
-  0%{
-    opacity:0;
-    visibility:hidden;
-  }
-  100%{
-    opacity:1;
-    visibility: display;
-  }
-}
+
 #bg-video {
     transition: opacity 1s ease;
     opacity: 1;
@@ -785,3 +759,140 @@ letter-spacing: -2px;
     opacity: 1;
   }
   
+/* Base styles (mobile) */
+.maintxt {
+  font-size: 2rem;
+  text-align: center;
+  line-height: 1.3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.maintxt span {
+  display: block;
+}
+
+/* Gradient animation for "Softwares" */
+.software {
+  font-weight: 600;
+  background: linear-gradient(
+    to right,
+    #2A0066,
+    #3B008F,
+    #4C00B8,
+    #5F1DFF,
+    #7B4DFF,
+    #9A6BFF,
+    #B58AFF
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 8s linear infinite;
+}
+
+/* Desktop-specific overrides */
+/* Base styles: MOBILE (default) */
+.maintxt {
+  font-size: 3rem;
+  text-align: left;       /* Left-aligned on mobile */
+  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* left align each line */
+}
+
+.maintxt span {
+  display: block;
+}
+
+/* Gradient animation for "Softwares" */
+.software {
+  font-weight: 450;
+  background: linear-gradient(
+    to right,
+    #2A0066,
+    #3B008F,
+    #4C00B8,
+    #5F1DFF,
+    #7B4DFF,
+    #9A6BFF,
+    #B58AFF
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 8s linear infinite;
+}
+
+
+
+
+
+/* MEDIA QUERIRRESSSSS */
+/* Desktop-specific overrides */
+@media (min-width: 1024px) {
+
+  /* Center the whole block on desktop */
+  .maintxtdiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .maintxt {
+    font-size: 3rem;
+    text-align: left;      /* keep text inside block left-aligned */
+    max-width: 700px;
+    display: block;
+    line-height: 1.2;
+    margin-left: auto;
+    margin-right: auto;    /* center the block horizontally */
+  }
+
+  /* First line combined: "Build with Softwares that feels" */
+  .maintxt .line1 {
+    display: inline;
+  }
+  .maintxt .line2 {
+    display: inline; /* gradient animation stays */
+  }
+  .maintxt .line3 {
+    display: block;
+    margin-left: 50px; /* indent second line */
+  }
+  .maintxt .line4 {
+    display: block;
+  }
+
+  /* Paragraph text centered on desktop */
+  .ptxt {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  /* Nav icons right side */
+  .nav1icons {
+    margin-left: auto;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+/* Gradient keyframes */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 100% 20%; }
+  50% { background-position: 50% 100%; }
+  75% { background-position: 100% 60%; }
+  85% { background-position: 80% 70%; }
+  100% { background-position: 0% 50%; }
+}
