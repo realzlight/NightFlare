@@ -70,7 +70,7 @@ height:500dvh;
   display:none;
   align-items:center;
   animation:slideIn 1s ease;
-  
+
 }
 
 .nav1 .nav1txt{
@@ -118,7 +118,7 @@ height:500dvh;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background: linear-gradient(to right, #000, #fff);
-  
+
 }
 .pro{
   width:36px;
@@ -146,14 +146,14 @@ height:500dvh;
     width:7.3rem;
     letter-spacing: -1px; /* adjust value as needed */
     text-align:center;
-    
 
-  
+
+
     animation:glow-anim 5s infinite ease-in-out;
 
 
   }
-  
+
 @keyframes glow-anim {
   0% {
     box-shadow: 0 0 10px #ff69b4; /* pink */
@@ -278,19 +278,19 @@ background: linear-gradient(to bottom, #808080, #ffffff);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  
+
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 1.6rem;
 }
 .menu-header h2:hover{
   animation:translateY 0.5s ease;
-  
-  
+
+
 }
 @keyframes translateY{
   0%{
-    
+
   }
   100%{
     transform: translateY(-5px);
@@ -355,7 +355,7 @@ background: linear-gradient(to bottom, #808080, #ffffff);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  
+
 }
 
 .menu-list li a:hover::after {
@@ -381,7 +381,7 @@ background: linear-gradient(to bottom, #808080, #ffffff);
   100% {
     transform: translateY(0);
     opacity: 1;
-    
+
   }
 }
 
@@ -413,7 +413,7 @@ animation:fadeDownUp 0.5s ease;
   font-weight: 350;
   color: white; /* added */
   margin-left: 5px; /* added */
-  
+
   font-family: "Inter", sans-serif;
   font-weight:500;
 
@@ -447,9 +447,9 @@ animation:fadeDownUp 0.5s ease;
 .fa-rocket {
   color: white;
   scale: 0.5;
-  
+
   display:inline-block;
-  
+
 }
 .fa-rocket:hover{
   animation:rocketLaunch 5s ease-in-out;
@@ -498,7 +498,7 @@ animation:fadeDownUp 0.5s ease;
   );
 
   background-size: 400% 100%;
-  
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -516,7 +516,7 @@ animation:fadeDownUp 0.5s ease;
 }
 
 .maintxt{
-  
+
   color:white;
   font-family:"Inter",sans-serif;
   margin-top:20px;
@@ -692,7 +692,7 @@ letter-spacing: -2px;
   display: block;             /* ensures proper layout */
   margin: 0 auto;             /* center horizontally */
   scale:1.2;
-  
+
 }
 
 
@@ -718,7 +718,7 @@ letter-spacing: -2px;
   font-weight:410;
   font-size:1rem;
   letter-spacing: -1px;
-  
+
 }
 /* Default styles for small devices */
 
@@ -739,9 +739,9 @@ letter-spacing: -2px;
 }
 
 /* Desktop-specific overrides */  /* Adjust the paragraph text for desktop */
-  
+
   /* nav1icons aligned to the right with 20px margin */
-  
+
 
   /* Adjust nav2 spacing if needed */
 
@@ -758,7 +758,7 @@ letter-spacing: -2px;
   #bg-video.fade-in {
     opacity: 1;
   }
-  
+
 /* Base styles (mobile) */
 .maintxt {
   font-size: 2rem;
@@ -847,8 +847,8 @@ justify-content:center;
   }
 
   .maintxt {
-    font-size: 3rem;
-    text-align: left;      /* keep text inside block left-aligned */
+    font-size: 4rem;
+    text-align: center;      /* keep text inside block left-aligned */
     max-width: 700px;
     display: block;
     line-height: 1.2;
@@ -857,29 +857,26 @@ justify-content:center;
   }
 
   /* First line combined: "Build with Softwares that feels" */
-   .maintxt .line1 {
+  .maintxt .line1 {
     display: inline;
-    justify-content: center;
-  
+    
   }
   .maintxt .line2 {
-    justify-content: center;
+    
   
     display: inline; /* gradient animation stays */
   }
   .maintxt .line3 {
     display: block;
     margin-left: 50px; /* indent second line */
-    justify-content: center;
-  
+
   }
   .maintxt .line4 {
     display: block;
-    justify-content: center;
+    
   
   }
   }
-
 
   /* Paragraph text centered on desktop */
   .ptxt {
@@ -897,8 +894,9 @@ justify-content:center;
     display: flex;
     align-items: center;
     gap: 10px;
+    
   }
-}
+
 
 /* Gradient keyframes */
 @keyframes gradientShift {
