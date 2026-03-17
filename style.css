@@ -857,19 +857,29 @@ justify-content:center;
   }
 
   /* First line combined: "Build with Softwares that feels" */
-  .maintxt .line1 {
+   .maintxt .line1 {
     display: inline;
+    justify-content: center;
+  
   }
   .maintxt .line2 {
+    justify-content: center;
+  
     display: inline; /* gradient animation stays */
   }
   .maintxt .line3 {
     display: block;
     margin-left: 50px; /* indent second line */
+    justify-content: center;
+  
   }
   .maintxt .line4 {
     display: block;
+    justify-content: center;
+  
   }
+  }
+
 
   /* Paragraph text centered on desktop */
   .ptxt {
