@@ -876,7 +876,10 @@ letter-spacing: -2px;
     margin-right: auto;
     text-align: center;
   }
-
+.bodyboxdiv{
+display:flex;
+justify-content:center;
+}
   /* Nav icons right side */
   .nav1icons {
     margin-left: auto;
