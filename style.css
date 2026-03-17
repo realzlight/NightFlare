@@ -722,15 +722,17 @@ letter-spacing: -2px;
 
 /* Styles for big devices (e.g., desktops) */
 @media (min-width: 1024px) {
-  .maintxt{
+  .maintxtdiv{
+display:flex;
     justify-content:center;
     align-items:center;
+}
+.nav1icons{
+display:flex;
+justify-content:right;
+}
     
-  }
-  .navbtn{
-    justify-content:right;
-  }
-
+ 
 #menu{
     justify-content:right;
   }
