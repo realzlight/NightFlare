@@ -826,7 +826,7 @@ letter-spacing: -2px;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: gradientShift 8s linear infinite;
-}
+  }
 
 
 
@@ -847,13 +847,14 @@ justify-content:center;
   }
 
   .maintxt {
-    font-size: 4rem;
+    font-size: 3.5rem;
     text-align: center;      /* keep text inside block left-aligned */
     max-width: 700px;
     display: block;
-    line-height: 1.2;
+    line-height: 1.1;
     margin-left: auto;
     margin-right: auto;    /* center the block horizontally */
+    letter-spacing:-2px;
   }
 
   /* First line combined: "Build with Softwares that feels" */
@@ -868,7 +869,8 @@ justify-content:center;
   }
   .maintxt .line3 {
     display: block;
-    margin-left: 50px; /* indent second line */
+    margin-left:auto;
+    margin-right:auto;/* indent second line */
 
   }
   .maintxt .line4 {
@@ -876,7 +878,7 @@ justify-content:center;
     
   
   }
-  }
+  
 
   /* Paragraph text centered on desktop */
   .ptxt {
@@ -896,7 +898,7 @@ justify-content:center;
     gap: 10px;
     
   }
-
+}
 
 /* Gradient keyframes */
 @keyframes gradientShift {
