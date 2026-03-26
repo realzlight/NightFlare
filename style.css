@@ -596,6 +596,7 @@ html, body {
   letter-spacing: -1px;
   margin: 0;
   z-index: 1; 
+  scale:1.1;
 }
 
 .EduOS{
@@ -621,11 +622,11 @@ html, body {
   gap: 16px;
   width: 100%;
   padding: 0 20px;
-  height:70vh;
+  height:100vh;
 }
 
 .line1 {
-  margin-top:70px;
+  margin-top:65px;
   color: white;
   font-size: clamp(2.3rem, 6vw, 4rem);
   font-weight: 450;
@@ -689,13 +690,23 @@ html, body {
   color: rgba(255,255,255,0.5);
   font-size: 0.95rem;
   text-align: center;
-  margin-top:2rem;
+  
 
   max-width: 700px;
-  margin: 0 auto;  
+
 }
-@media (min-height:769px){
-  .line2{
-    margin-top:16px;
+.subtxt{
+  margin: 1.3rem auto 0 auto;
+}
+
+
+@media (min-width: 768px) {
+  .line2 {
+    margin-top: 1rem;
+  }
+
+  .subtxt {
+    margin-top: 1.5rem; 
+    max-width:550px;
   }
 }
