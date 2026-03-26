@@ -689,5 +689,13 @@ html, body {
   color: rgba(255,255,255,0.5);
   font-size: 0.95rem;
   text-align: center;
-  margin-top:1.1rem;
+  margin-top:2rem;
+
+  max-width: 700px;
+  margin: 0 auto;  
+}
+@media (min-height:769px){
+  .line2{
+    margin-top:16px;
+  }
 }
