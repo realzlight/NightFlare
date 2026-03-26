@@ -537,7 +537,7 @@ html, body {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  padding-top: 202px; /* exact nav height: 35 + 67 */
+  padding-top: 182px; /* exact nav height: 35 + 67 */
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -697,8 +697,9 @@ html, body {
   align-items: center;
   gap: 16px;
   width: 100%;
-  padding: 0 20px;
+  padding: 0 10px;
   height:100vh;
+  
 }
 
 .line1 {
