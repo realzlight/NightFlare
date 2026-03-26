@@ -49,7 +49,7 @@ html, body {
   justify-content:center;
 
   overflow:hidden;
-  
+
 
   border-bottom:0.5px solid #222;
   background:rgba(255,255,255,0.02);
@@ -631,7 +631,7 @@ html, body {
   height:50%;
 }
 .boxtxt {
-  
+
   font-size: 12px;
   font-weight: 300;
   color: white;
@@ -721,8 +721,8 @@ html, body {
   font-family:"Inter",sans-serif;
   letter-spacing:-1px;
   margin-top:7px;
-  
-  
+
+
 }
 
 .eco {
@@ -767,13 +767,13 @@ html, body {
   font-size: 0.95rem;
   text-align: center;
   letter-spacing:-0.7;
-  
+
 
   max-width: 700px;
 
 }
 .subtxt{
-  margin: 1.5rem auto 0 auto;
+  margin: 0rem auto 0 auto;
 }
 
 
@@ -784,12 +784,13 @@ html, body {
 
   .subtxt {
     margin-top: 1.5rem; 
-    
+
     max-width:550px;
   }
-  
+
   .herobtn{
     width:15rem;
+    margin-right:50px;
   }
   .docsbtn{
     width:15rem;
@@ -800,14 +801,14 @@ html, body {
   display:flex;
   width:100%;
   height:auto;
-  
+
   margin:1.5rem auto 0 auto;
   align-items:center;
   justify-content: center;
 
 }
 .herobtn{
-  margin-right:50px;
+  margin-right:15px;
   border:none;
   box-shadow:none;
   width:20rem;
