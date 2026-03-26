@@ -7,6 +7,7 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
+
 }
 
 body{
@@ -194,9 +195,10 @@ html, body {
   position:absolute;
   bottom:0;
   left:0;
+  z-index:5;
 
   width:100%;
-  height:0.7px;
+  height:2px;
 
   display:flex;
   gap:2px;
@@ -210,7 +212,7 @@ html, body {
 
 .progress-fill{
   height:100%;
-  width:0%;
+  width:100%;
   background:white;
 }
 /* =========================
@@ -554,49 +556,89 @@ html, body {
 }
 
 .herobox {
-  position: relative;             
-  margin-top:0;
+  position: relative;
   z-index: 3;
+  overflow:hidden;
   width: 80%;
   max-width: 500px;
-  height: 32px;
+  height: 36px;
+
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between; /* KEY */
+
+  padding: 0 10px;
+
   background: rgba(0, 0, 0, 0.3);
   border: 0.1px solid grey;
   border-radius: 20px;
   backdrop-filter: blur(10px);
-  flex-shrink: 0;                 /* don't let flexbox squish it */
 }
 
 
+
+.hdialog {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 10px;
+
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(10px) scale(0.98);
+
+  pointer-events: none;   /* IMPORTANT */
+  z-index: 0;             /* base layer */
+
+  transition: 
+    opacity 0.5s ease,
+    filter 0.5s ease,
+    transform 0.5s ease;
+}
+
+.hdialog.active {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0) scale(1);
+
+  pointer-events: auto;   /* active only */
+  z-index: 2;             /* bring to top */
+}
+.hdialog:nth-child(1) { background: rgba(76, 0, 184, 0.05); }
+.hdialog:nth-child(2) { background: rgba(0, 255, 200, 0.05); }
+.hdialog:nth-child(3) { background: rgba(255, 0, 100, 0.05); }
+
 .new {
-  position: absolute; 
-  left: 5px;
-  width: 54px;
-  height: 24px;
-  background-image: linear-gradient(to bottom, #3B008F, #4C00B8);
-  color: white;
-  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  padding: 3px 8px;
   border-radius: 20px;
+  scale:1.3;
+  background: linear-gradient(to bottom, #3B008F, #4C00B8);
+  color: white;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-  box-shadow: 0 0 6px #3B008F, 0 0 6px #4C00B8, 0 0 15px #4C00B8;
+
+  box-shadow: 0 0 6px #3B008F, 0 0 6px #4C00B8;
+  letter-spacing:-0.5px;
+  font-size:7px;
+  font-weight:500;
+  height:50%;
 }
 .boxtxt {
-  color: white;
-  font-family: "Inter", sans-serif;
-  font-weight: 300;
+  
   font-size: 12px;
-  letter-spacing: -1px;
-  margin: 0;
-  z-index: 1; 
-  scale:1.1;
+  font-weight: 300;
+  color: white;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+  text-align:center;
+  flex:1;
 }
 
 .EduOS{
@@ -611,6 +653,40 @@ html, body {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+}
+.online-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+
+  background: #00ff88;
+
+  box-shadow:
+    0 0 5px #00ff88,
+    0 0 10px #00ff88;
+
+  animation: pulseGreen 1.2s infinite ease-in-out;
+}
+@keyframes pulseGreen {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+    box-shadow: 0 0 4px #00ff88;
+  }
+
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+    box-shadow:
+      0 0 10px #00ff88,
+      0 0 20px #00ff88;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+    box-shadow: 0 0 4px #00ff88;
+  }
 }
 
 .herocontent {
@@ -690,13 +766,14 @@ html, body {
   color: rgba(255,255,255,0.5);
   font-size: 0.95rem;
   text-align: center;
+  letter-spacing:-0.7;
   
 
   max-width: 700px;
 
 }
 .subtxt{
-  margin: 1.3rem auto 0 auto;
+  margin: 1.5rem auto 0 auto;
 }
 
 
@@ -707,6 +784,49 @@ html, body {
 
   .subtxt {
     margin-top: 1.5rem; 
+    
     max-width:550px;
   }
+  
+  .herobtn{
+    width:15rem;
+  }
+  .docsbtn{
+    width:15rem;
+  }
+}
+
+.herobtndiv{
+  display:flex;
+  width:100%;
+  height:auto;
+  
+  margin:1.5rem auto 0 auto;
+  align-items:center;
+  justify-content: center;
+
+}
+.herobtn{
+  margin-right:50px;
+  border:none;
+  box-shadow:none;
+  width:20rem;
+  height:2.5rem;
+  border-radius:8px;
+  color:black;
+  background-color:#fff;
+  animation:glow-anim 5s ease-in infinite ;
+    letter-spacing:-0.8px;
+}
+
+.docsbtn{
+  border:none;
+  box-shadow:none;
+  width:20rem;
+  height:2.5rem;
+  border-radius:8px;
+  color:white;
+  background-color:hsla(0, 0%, 5%, 1);
+  border:0.1px solid white ;
+  letter-spacing:-0.8px;
 }
