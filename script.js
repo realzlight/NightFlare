@@ -131,7 +131,6 @@ runCycle();
   ========================= */
   const fullMenu = document.querySelector(".fullmenu");
   const menuIcon = document.getElementById("menu");
-  const navBtn = document.querySelector(".navbtn");
   const closeBtn = document.getElementById("menuClose");
 
   function openMenu() {
@@ -142,8 +141,7 @@ runCycle();
     fullMenu.classList.remove("active");
   }
 
-  if (menuIcon) menuIcon.addEventListener("click", openMenu);
-  if (navBtn) navBtn.addEventListener("click", openMenu);
+  if (menuIcon) menuIcon.addEventListener("click", openMenu)
   if (closeBtn) closeBtn.addEventListener("click", closeMenu);
 
   document.querySelectorAll(".menu-links a").forEach(link => {
@@ -178,3 +176,68 @@ function animateCount(target, duration = 2000) {
   requestAnimationFrame(update);
 }
 
+/*============================= */
+/*POPUP MECHANISM*/
+
+const popup      = document.getElementById("popup");
+const popupIcon  = document.getElementById("popupIcon");
+const popupTitle = document.getElementById("popupTitle");
+const popupSub   = document.getElementById("popupSub");
+const popupFill  = document.getElementById("popupFill");
+const popupClose = document.getElementById("popupClose");
+
+let popupTimer = null;
+let popupState = false;
+
+function openPopup({ icon = "🔔", title = "Notice", sub = "", duration = 4000 }) {
+  clearTimeout(popupTimer);
+
+  popupIcon.textContent  = icon;
+  popupTitle.textContent = title;
+  popupSub.textContent   = sub;
+
+  // reset progress
+  popupFill.style.transition = "none";
+  popupFill.style.transform  = "scaleX(1)";
+
+  popup.classList.add("active");
+  popupState = true;
+
+  // start shrink after paint
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      popupFill.style.transition = `transform ${duration}ms linear`;
+      popupFill.style.transform  = "scaleX(0)";
+    });
+  });
+
+  popupTimer = setTimeout(closePopup, duration);
+}
+
+function closePopup() {
+  popup.classList.remove("active");
+  popupState = false;
+  clearTimeout(popupTimer);
+}
+
+popupClose.addEventListener("click", closePopup);
+
+// Updated calls
+document.querySelector(".herobtn").addEventListener("click", () => {
+  openPopup({
+    icon: "🚀",
+    title: "SneakPeek isn't available yet",
+    sub: "We're cooking something big. Stay tuned.",
+    duration: 4000
+  });
+});
+
+document.querySelector(".navbtn").addEventListener("click", () => {
+  openPopup({
+    icon: "🔒",
+    title: "Coming Soon",
+    sub: "SneakPeek drops with the launch.",
+    duration: 4000
+  });
+});
+/*==============================*/
