@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const diff = launchDate - Date.now();
 
     if (diff <= 0) {
-      document.querySelector(".countdown").textContent = "LIVE 🚀";
+      document.querySelector(".countdown").textContent = "ArcOS";
       return;
     }
 
@@ -228,7 +228,7 @@ document.querySelector(".herobtn").addEventListener("click", () => {
     icon: "🚀",
     title: "SneakPeek isn't available yet",
     sub: "We're cooking something big. Stay tuned.",
-    duration: 4000
+    duration: 3000
   });
 });
 
@@ -237,7 +237,111 @@ document.querySelector(".navbtn").addEventListener("click", () => {
     icon: "🔒",
     title: "Coming Soon",
     sub: "SneakPeek drops with the launch.",
-    duration: 4000
+    duration: 3000
   });
 });
+
+document.querySelector(".docsbtn").addEventListener("click", () => {
+  openPopup({
+    icon: "📃",
+    title: "Docs Loading...",
+    sub: "Optimizing Docs Page For Better Readibility",
+    duration: 3000
+  });
+});
+/*==============================*/
+/* TXT SPLIT + WAVE + SUBTXT   */
+/*==============================*/
+
+/* --- LETTER SPLITTER --- */
+function splitLetters(selector) {
+  document.querySelectorAll(selector).forEach(el => {
+    el.childNodes.forEach(node => {
+      if (node.nodeType === 3) {
+        const letters = node.textContent.split("").map(char => {
+          const span       = document.createElement("span");
+          span.className   = "letter";
+          span.textContent = char === " " ? "\u00A0" : char;
+          return span;
+        });
+        letters.forEach(s => el.insertBefore(s, node));
+        el.removeChild(node);
+      }
+    });
+  });
+}
+
+/* --- WAVE EFFECT --- */
+function applyWave(selector, maxDist = 80, strength = 0.35) {
+  document.querySelectorAll(selector).forEach(el => {
+
+    el.addEventListener("mousemove", e => {
+      el.querySelectorAll(".letter").forEach(letter => {
+        const rect    = letter.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const dist    = Math.abs(e.clientX - centerX);
+
+        if (dist < maxDist) {
+          const s = 1 - dist / maxDist;
+          letter.style.transform = `scale(${1 + s * strength})`;
+          letter.style.opacity   = String(0.5 + s * 0.5);
+        } else {
+          letter.style.transform = "scale(1)";
+          letter.style.opacity   = "0.5";
+        }
+      });
+    });
+
+    el.addEventListener("mouseleave", () => {
+      el.querySelectorAll(".letter").forEach(l => {
+        l.style.transform = "scale(1)";
+        l.style.opacity   = "1";
+      });
+    });
+
+  });
+}
+
+/* --- INIT HEADLINES --- */
+splitLetters(".line1, .line2");
+applyWave(".line1, .line2", 80, 0.35);
+
+
+/* --- SUBTXT GRADIENT CONTROL --- */
+const subtxt = document.querySelector(".subtxt");
+
+if (subtxt) {
+  const defaultBg = `linear-gradient(
+    120deg,
+    rgba(200,200,200,0.5) 0%,
+    rgba(200,200,200,0.5) 40%,
+    #ffffff 48%,
+    #ffffff 52%,
+    rgba(200,200,200,0.5) 60%,
+    rgba(200,200,200,0.5) 100%
+  )`;
+
+  subtxt.addEventListener("mousemove", e => {
+    const rect = subtxt.getBoundingClientRect();
+    const x    = ((e.clientX - rect.left) / rect.width) * 100;
+
+    subtxt.style.animationPlayState = "paused";
+    subtxt.style.backgroundImage    = `linear-gradient(
+      120deg,
+      rgba(200,200,200,0.4) 0%,
+      rgba(200,200,200,0.4) ${x - 12}%,
+      #ffffff          ${x - 4}%,
+      #ffffff          ${x + 4}%,
+      rgba(200,200,200,0.4) ${x + 12}%,
+      rgba(200,200,200,0.4) 100%
+    )`;
+  });
+
+  subtxt.addEventListener("mouseleave", () => {
+    subtxt.style.animationPlayState = "running";
+    subtxt.style.backgroundImage    = defaultBg;
+    subtxt.style.backgroundSize     = "300% 300%";
+  });
+}
+
 /*==============================*/
