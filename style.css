@@ -1,211 +1,1017 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NightFlare</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
 
-<body>
+/* =========================
+   GLOBAL RESET
+========================= */
+*{
+  font-family:"Inter", sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color: transparent;
 
-  <!-- NAV SYSTEM -->
-  <div class="grandnav">
+}
 
-    <nav class="nav1">
-      <div class="dialog active">
-        <div class="layer bg"></div>
-        <div class="layer content">
-          <span class="launch-text">Launching Soon</span>
-          <span class="countdown">
-            <span id="days">00</span>d :
-            <span id="hours">00</span>h :
-            <span id="minutes">00</span>m :
-            <span id="seconds">00</span>s
-          </span>
-        </div>
-      </div>
-      <div class="dialog">
-        <div class="layer bg"></div>
-        <div class="layer content"><span>🚀 New Features Coming</span></div>
-      </div>
-      <div class="dialog">
-        <div class="layer bg"></div>
-        <div class="layer content"><span>⚡ Built for Speed & Power</span></div>
-      </div>
-      <div class="progress-container">
-        <div class="progress-seg"><div class="progress-fill"></div></div>
-        <div class="progress-seg"><div class="progress-fill"></div></div>
-        <div class="progress-seg"><div class="progress-fill"></div></div>
-      </div>
-    </nav>
+body{
+  background-color:#0a0a0a;
+  min-height:1000vh;
+}
 
-    <nav class="nav2">
-      <div class="leftnav">
-        <h1 class="logo">
-  <span class="logo-inner">NightFlare</span>
-</h1>
-        <span class="pro">Pro</span>
-      </div>
-      <div class="nav1icons">
-        <button class="navbtn">SneakPeak</button>
-        <i class="fa-solid fa-bars" id="menu"></i>
-      </div>
-    </nav>
 
-  </div>
-  <!-- END GRANDNAV -->
+html, body {
+  overflow-x: hidden;
+  overflow-y: auto;   /* explicitly allow vertical scroll */
+}
+/* =========================
+   NAV CONTAINER
+========================= */
 
-  <!-- FULLSCREEN MENU — outside grandnav -->
-  <div class="fullmenu" id="fullMenu">
-    <div class="menu-orb menu-orb-1"></div>
-    <div class="menu-orb menu-orb-2"></div>
-    <div class="fullmenu-content">
-      <button class="menu-close" id="menuClose">✕</button>
-      <ul class="menu-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#softwares">Softwares</a></li>
-        <li><a href="#founders">Founders</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#footer">Footer</a></li>
-        <li><a href="#docs">Docs</a></li>
-      </ul>
-    </div>
-  </div>
-  <!-- END FULLMENU -->
+.grandnav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
 
-  <!-- HERO SECTION -->
-<section class="herosec" id="home">
-  <video class="darkveil" autoplay muted loop playsinline>
-    <source src="dark_veil.mp4" type="video/mp4">
-  </video>
 
-  <div class="herocontent">
-  <div class="herobox">
+/* =========================
+   NAV 1 CONTAINER
+========================= */
+.nav1{
+  position:relative;
+  width:100%;
+  height:35px;
 
-  <div class="hdialog active">
-    <span class="new">✦</span>
-    <h1 class="boxtxt">
-      <span class="EduOS">EduOS</span> — Launching Soon!
-    </h1>
-    <span class="online-dot"></span>
-  </div>
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-<div class="hdialog">
-  <span class="new"><i class="fa-solid fa-users"></i></span>
-  <h1 class="boxtxt">Trusted by <span id="userCount">0</span>k+ creators</h1>
-  <span class="online-dot"></span>
-</div>
+  overflow:hidden;
 
-  <div class="hdialog">
-    <span class="new"><i class="fa-solid fa-tag"></i></span>
-    <h1 class="boxtxt">Sale is Going On!</h1>
-    <span class="online-dot"></span>
-  </div>
-<!-- HERO BOX END -->
-</div>
-    
-    <h1 class="line1">Forging <span class="eco">Ecosystems</span></h1>
-    <h1 class="line2">That Feels <span class="alive">Alive</span></h1>
-    <p class="subtxt">     Software designed to bring ideas to life, making projects intuitive, interactive, vibrant, seamless, elegant, aesthetic, and flawless for every creator.</p>
-    
-    
-    <div class="herobtndiv">
-      
-      <button class="herobtn">SneakPeak</button>
-      <button class="docsbtn">Browse Docs</button>
-    </div>
-    
-  <div class="herotickdiv">
-  <div class="tick-pill tick-pill-1">
-    <i class="fa-solid fa-check tick-icon"></i>
-    <span>Efficient</span>
-  </div>
-  <div class="tick-pill tick-pill-2">
-    <i class="fa-solid fa-check tick-icon"></i>
-    <span>Reliable</span>
-  </div>
-  <div class="tick-pill tick-pill-3">
-    <i class="fa-solid fa-check tick-icon"></i>
-    <span>Smooth</span>
-  </div>
-</div>
-    
-  </div>
 
-</section>
-  <!-- END HERO -->
+  border-bottom:0.5px solid #222;
+  background:rgba(255,255,255,0.02);
+  animation:navDrop 1s ease;
+}
+
+
+/* =========================
+   DIALOG BASE
+========================= */
+.dialog{
+  position:absolute;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+
+  width:100%;
+  height:100%;
+
+  font-size:0.8rem;
+  color:#aaa;
+
+  opacity:0;
+  transform:translateY(100%) scale(0.96);
+
+  transition:
+    transform 0.6s cubic-bezier(0.22,1,0.36,1),
+    opacity 0.4s ease;
+
+  will-change:transform, opacity;
+}
+
+/* ACTIVE */
+.dialog.active{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+/* DEFAULT EXIT (fallback) */
+.dialog.exit{
+  opacity:0;
+  transform:translateY(-100%) scale(0.96);
+}
+
+
+/* =========================
+   DIRECTION ANIMATIONS
+========================= */
+.enter-up{
+  transform: translateY(100%) scale(0.95);
+  opacity: 0;
+}
+
+.enter-down{
+  transform: translateY(-100%) scale(0.95);
+  opacity: 0;
+}
+
+.exit-up{
+  transform: translateY(-80%) scale(0.92);
+  opacity: 0;
+}
+
+.exit-down{
+  transform: translateY(80%) scale(0.92);
+  opacity: 0;
+}
+
+/* =========================
+   LAYERS (FINAL BOSS)
+========================= */
+.layer{
+  position:absolute;
+  inset:0;
+}
+
+/* BACKGROUND LAYER */
+.layer.bg{
+  z-index:0;
+
+  background: radial-gradient(circle at 50% 50%,
+    rgba(0,120,255,0.25),
+    rgba(0,0,0,0) 70%
+  );
+
+  filter: blur(20px);
+
+  animation: gradientShift 8s ease-in-out infinite alternate;
+}
+
+/* ANIMATION */
+@keyframes gradientShift{
+  0%{ transform: translateX(-10%) scale(1); }
+  100%{ transform: translateX(10%) scale(1.1); }
+}
+/* CONTENT LAYER */
+.layer.content{
+  position:relative;
+  z-index:2;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+
+/* =========================
+   DIALOG THEMES
+========================= */
+.dialog:nth-child(1) .bg{
+  background:radial-gradient(circle, rgba(51,204,255,0.15), transparent);
+}
+
+.dialog:nth-child(2) .bg{
+  background:radial-gradient(circle, rgba(138,43,226,0.15), transparent);
+}
+
+.dialog:nth-child(3) .bg{
+  background:radial-gradient(circle, rgba(0,255,200,0.15), transparent);
+}
+
+
+/* =========================
+   TEXT STYLES
+========================= */
+.launch-text{
+  color:#fff;
+  font-weight:400;
+}
+
+.countdown{
+  font-family:"Inter",sans-serif;
+  color:#33ccff;
+}
+
+
+
+/* =========================
+   SEGMENTED PROGRESS BAR
+========================= */
+.progress-container{
+  position:absolute;
+  bottom:0;
+  left:0;
+  z-index:5;
+
+  width:100%;
+  height:2px;
+
+  display:flex;
+  gap:2px;
+}
+
+.progress-seg{
+  flex:1;
+  background:rgba(255,255,255,0.2);
+  overflow:hidden;
+}
+
+.progress-fill{
+  height:100%;
+  width:100%;
+  background:white;
+}
+/* =========================
+   NAV 2 (MAIN NAV)
+========================= */
+.nav2{
+  width:100%;
+  height:67px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:0.5px solid #222;
+  padding:0 15px;
+  background: rgba(255,255,255,0.01);
+  backdrop-filter: blur(10px);
+  animation:2s navDrop ease-out;
+}
+
+/* =========================
+   LEFT SECTION (LOGO + PRO)
+========================= */
+.leftnav{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* LOGO */
+.logo{
+  font-size:1rem;
+  font-weight:500;
+
+  background: linear-gradient(90deg, hsla(0, 0%, 30%, 1), #fff, hsla(0, 0%, 30%, 1));
+  background-size:200% auto;
+
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  animation:text-gradient 3s linear infinite;
+}
+
+/* LOGO ANIMATION */
+@keyframes text-gradient{
+  0%{ background-position:0% center; }
+  100%{ background-position:200% center; }
+}
+.logo {
+  cursor: default;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+}
+
+/* wrapper that holds the animated gradient */
+.logo-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  background: linear-gradient(90deg, hsla(0,0%,30%,1), #fff, hsla(0,0%,30%,1));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: text-gradient 3s linear infinite;
+}
+
+.logo-letter {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: center bottom;
+}
+/* PRO BADGE */
+.pro{
+  width:36px;
+  height:21px;
+  border:0.5px solid white;
+  border-radius:6px;
+  color:white;
+  font-size:0.75rem;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  opacity:0.85;
+}
+
+/* =========================
+   RIGHT SECTION (BUTTON + ICON)
+========================= */
+.nav1icons{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+/* BUTTON */
+.navbtn{
+  border:none;
+  height:2.2rem;
+  width:7.3rem;
+  border-radius:10px;
+  font-size:0.85rem;
+  letter-spacing:-0.5px;
+  cursor:pointer;
+
+  background:white;
+  color:black;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  transition:0.3s;
+
+  animation:glow-anim 5s infinite ease-in-out;
+}
+
+/* BUTTON HOVER */
+.navbtn:hover{
+  transform:scale(1.05);
+}
+
+/* GLOW ANIMATION */
+@keyframes glow-anim{
+  0%{ box-shadow:0 0 10px #ff69b4; }
+  33%{ box-shadow:0 0 10px #8a2be2; }
+  66%{ box-shadow:0 0 10px #33ccff; }
+  100%{ box-shadow:0 0 10px #ff69b4; }
+}
+
+/* MENU ICON */
+#menu{
+  color:white;
+  font-size:1.2rem;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+/* ICON HOVER */
+#menu:hover{
+  transform:scale(1.15);
+}
+
+/* =========================
+   FULLSCREEN MENU WRAPPER
+========================= */
+.fullmenu {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  opacity: 0;
+  pointer-events: none;
+
+  /* NO transform — pure fade + blur */
+  transition:
+    opacity 0.4s ease,
+    backdrop-filter 0.4s ease;
+}
+
+.fullmenu.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* =========================
+   VIGNETTE / BORDER
+========================= */
+.fullmenu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.75) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fullmenu::after {
+  content: "";
+  position: absolute;
+  inset: 2rem;
+  border: 1px solid rgba(139, 92, 246, 0.08);
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.6s 0.3s ease;
+}
+
+.fullmenu.active::after { opacity: 1; }
+
+/* =========================
+   MENU CONTENT
+========================= */
+.fullmenu-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 500px;        /* prevent content overflow */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 6rem 2rem 2rem; /* top padding clears close button */
+  gap: 1rem;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+.menu-close {
+  position: absolute;
+  top: 1.8rem;
+  right: 1.8rem;
+  z-index: 10;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  background: rgba(109, 40, 217, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: rgba(196, 181, 253, 0.6);
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.menu-close:hover {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: rgba(167, 139, 250, 0.5);
+  color: #c4b5fd;
+  transform: rotate(90deg) scale(1.1);
+}
+
+/* =========================
+   NAV LINKS
+========================= */
+.menu-links {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.menu-links li {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(20px);
+  transition:
+    opacity 0.5s ease,
+    filter 0.5s ease,
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ACTIVE — animate in bottom to top order */
+/* last link (Docs) fires first, Home fires last */
+.fullmenu.active .menu-links li:nth-child(9) { opacity:1; filter:blur(0); transform:translateY(0); transition-delay: 0.05s; }
+.fullmenu.active .menu-links li:nth-child(8) { opacity:1; filter:blur(0); transform:translateY(0); transition-delay: 0.10s; }
+.fullmenu.active .menu-links li:nth-child(7) { opacity:1; filter:blur(0); transform:translateY(0); transition-delay: 0.15s; }
+.fullmenu.active .menu-links li:nth-child(6) { opacity:1; filter:blur(0); transform:translateY(0); transition-delay: 0.20s; }
+.fullmenu.active .menu-links li:nth-child(5) { opacity:1; filter:blur(0); transform:translateY(0); transition-delay: 0.25s; }
+.fullmenu.active .menu-links li:nth-child(4) { opacity:1; filter:blur(0); transform:translateY(0); transition-delay: 0.30s; }
+.fullmenu.active .menu-links li:nth-child(3) { opacity:1; filter:blur(0); transform:translateY(0); transition-delay: 0.35s; }
+.fullmenu.active .menu-links li:nth-child(2) { opacity:1; filter:blur(0); transform:translateY(0); transition-delay: 0.40s; }
+.fullmenu.active .menu-links li:nth-child(1) { opacity:1; filter:blur(0); transform:translateY(0); transition-delay: 0.45s; }
+
+/* CLOSE — reset instantly with no delay */
+.fullmenu:not(.active) .menu-links li {
+  transition-delay: 0s;
+}
+
+.menu-links a {
+  display: block;
+  padding: 0.5rem 1.5rem;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 200;
+  color: rgba(196, 181, 253, 0.25);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.menu-links a:hover {
+  color: rgba(233, 221, 255, 0.95);
+  letter-spacing: -0.02em;
+}
+
+.menu-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.8), transparent);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.menu-links a:hover::after {
+  width: 70%;
+}
+
+/* =========================
+   AMBIENT ORBS
+========================= */
+.menu-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(60px);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.fullmenu.active .menu-orb { opacity: 1; }
+
+.menu-orb-1 { width: 300px; height: 300px; background: hsla(258, 61%, 13%, 1); top: -80px; left: -80px; }
+.menu-orb-2 { width: 250px; height: 250px; background: #4C00B8; bottom: -60px; right: -60px; }
+/*
+#2A0066,
+#3B008F,
+#4C00B8,
+#5F1DFF,
+#7B4DFF,
+#9A6BFF,
+#B58AFF
+
+*/
+
+/* =============================*/
+/* NAV SYSTEM ENDS HERE*/
+/* =============================*/
+/* HERO SECTION STARTS HERE */
+
+
+
+
+.herosec {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  padding-top: 182px; /* exact nav height: 35 + 67 */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.darkveil {
+  position: absolute; /* must be absolute, NOT fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+  overflow:hidden;
+}
+
+.herobox {
+  position: relative;
+  z-index: 3;
+  overflow:hidden;
+  width: 80%;
+  max-width: 500px;
+  height: 36px;
+  animation:fadeBlur 0.8s ease 0.1s both;;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* KEY */
+
+  padding: 0 10px;
+
+  background: rgba(0, 0, 0, 0.3);
+  border: 0.1px solid grey;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+
+
+.hdialog {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 10px;
+
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(10px) scale(0.98);
+
+  pointer-events: none;   /* IMPORTANT */
+  z-index: 0;             /* base layer */
+
+  transition: 
+    opacity 0.5s ease,
+    filter 0.5s ease,
+    transform 0.5s ease;
+}
+.herobox {
+  /* ADD to existing rule */
+  transition:
+    background 0.4s ease,
+    backdrop-filter 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.herobox:hover {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 0 0 0.5px rgba(123, 77, 255, 0.4),
+    0 0 12px rgba(95, 29, 255, 0.2),
+    0 0 30px rgba(95, 29, 255, 0.08),
+    inset 0 0 16px rgba(95, 29, 255, 0.06);
+}
+
+/* shimmer pseudo element */
+.herobox::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 30%,
+    rgba(167, 139, 250, 0.6) 50%,
+    transparent 70%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.herobox:hover::before {
+  opacity: 1;
+  animation: borderSweep 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes borderSweep {
+  0%   { background-position: -100% 0; }
+  100% { background-position: 200% 0;  }
+}
+
+
+.hdialog.active {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0) scale(1);
+
+  pointer-events: auto;   /* active only */
+  z-index: 2;             /* bring to top */
+}
+.hdialog:nth-child(1) { background: rgba(76, 0, 184, 0.05); }
+.hdialog:nth-child(2) { background: rgba(0, 255, 200, 0.05); }
+.hdialog:nth-child(3) { background: rgba(255, 0, 100, 0.05); }
+
+.new {
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  scale:1.3;
+  background: linear-gradient(to bottom, #3B008F, #4C00B8);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 0 6px #3B008F, 0 0 6px #4C00B8;
+  letter-spacing:-0.5px;
+  font-size:7px;
+  font-weight:500;
+  height:50%;
+}
+.boxtxt {
+
+  font-size: 12px;
+  font-weight: 300;
+  color: white;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+  text-align:center;
+  flex:1;
+}
+
+.EduOS{
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: -0.5px;
+
+
+  background: linear-gradient(to bottom, hsl(262, 100%, 35%), hsl(266, 100%, 65%));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.online-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+
+  background: #00ff88;
+
+  box-shadow:
+    0 0 5px #00ff88,
+    0 0 10px #00ff88;
+
+  animation: pulseGreen 1.2s infinite ease-in-out;
+}
+@keyframes pulseGreen {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+    box-shadow: 0 0 4px #00ff88;
+  }
+
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+    box-shadow:
+      0 0 10px #00ff88,
+      0 0 20px #00ff88;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+    box-shadow: 0 0 4px #00ff88;
+  }
+}
+
+.userCount{
+  background-image:linear-gradient(to bottom,hsla(152, 100%, 35%, 1), #fff);
+  background-clip:text;
+  -webkit-background-clip:text;
+}
+.herocontent {
+  position: relative;
+  z-index: 3;              /* above video */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 0 10px;
+  height:100vh;
   
+}
+
+.line1 {
+  margin-top:65px;
+  color: white;
+  font-size: clamp(2.3rem, 6vw, 4rem);
+  font-weight: 500;
+  text-align: center;
+  font-family:"Inter",sans-serif;
+  letter-spacing:-1px;
+  line-height:1px;
+
+}
+
+.line2 {
+  color: white;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  font-weight: 500;
+  text-align: center;
+  font-family:"Inter",sans-serif;
+  letter-spacing:-1px;
+  margin-top:7px;
+
+
+}
+
+.eco {
+  background: linear-gradient(135deg,
+    #fff,
+    #9A6BFF,
+    #5F1DFF,
+    #fff,
+    #4C00B8,
+    #9A6BFF, 
+    #3B008F,
+    #B58AFF,
+    #5F1DFF,
+    #fff/* ← remove the comma here */
+  );
+  font-weight:500;
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: ecoShift 30s ease/*cubic-bezier(0.45, 0.05, 0.55, 0.95) */infinite;
+}
+
+@keyframes ecoShift {
+  0%   { background-position: 0% 7%; }
+  7%   { background-position: 53% 21%; }
+  17%  { background-position: 91% 7%; }
+  27%  { background-position: 13% 77%; }
+  37%  { background-position: 77% 43%; }
+  47%  { background-position: 7% 91%; }
+  57%  { background-position: 63% 17%; }
+  67%  { background-position: 37% 53%; }
+  77%  { background-position: 83% 7%; }
+  87%  { background-position: 21% 67%; }
+  97%  { background-position: 47% 37%; }
+  100% { background-position: 0% 7%; }
+}
+
+
+.alive {
+  position: relative;
+  color: white;
+  padding: 1px 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* the sweeping highlight */
+.alive::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #4C00B8, #9A6BFF);
+  border-radius: 10px;
+  z-index: -1;
+  animation: aliveReveal 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes aliveReveal {
+  0%   { width: -0%; }
+  100% { width: 100%; }
+}
+.subtxt{
+  font-size: 0.85rem;
+  text-align: center;
+  letter-spacing: -0.7px;
+  margin: 0 auto;
+  max-width: 700px;
   
-  <!-- ABOUT VIDEO -->
-  <section class="abtsec">
-    <div class="abtcontent">
-      <h1 class="abtheading">Beyond The Code</h1>
-      <p class="abtsub">What Are We Beyond the Code.</p>
-      <div class="introcont">>
-      <video controls class="intro" poster="">
-  <source src="intro_veil.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video></div
 
+  color: rgba(255,255,255,0.6);
+  background: linear-gradient(
+    120deg,
+    rgba(200,200,200,0.5) 0%,
+    rgba(200,200,200,0.5) 40%,
+    #ffffff 48%,
+    #ffffff 52%,
+    rgba(200,200,200,0.5) 60%,
+    rgba(200,200,200,0.5) 100%
+  );
 
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
 
-      </div>
-      
-      
-      
-      
-      
-      
-    </div>
-  	
-  	
-  	
+  animation: shimmer 10s ease-in-out infinite, fadeBlur 1s ease 0.5s both;
+} 
+.subtxt {
+  cursor: default;
+  transition: background-position 0.1s ease;
+}
+
+.subtxt:hover {
+  animation-play-state: paused;  /* freeze shimmer while mouse controls it */
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 100%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .line2 {
+    margin-top: 1rem;
+  }
+
+  .subtxt {
+    margin-top: 1.5rem; 
+
+    max-width:550px;
+  }
+
+}
   
-  	
-  	
-  	
-  </section>
 
+.herobtndiv {
+  display: flex;
+  flex-direction: column;    /* mobile: stacked */
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 1.5rem auto 0 auto;
+}
 
+.herobtn, .docsbtn {
+  width: 90%;
+  max-width: 320px;
+  height: 2.5rem;
+  border-radius: 8px;
+  letter-spacing: -0.8px;
+  animation:1s btnRise ease;
+}
 
- 
- <!-- END OF ABOUT -->
- 
- 
- 
- 
- 
- 
- <!-- POPUP MECHANISM -->
- <!-- your sections above -->
+.herobtn {
+  border: none;
+  color: black;
+  background-color: #fff;
+  animation: glow-anim 5s ease-in infinite, 1s btnRise ease-out;
+}
 
-<!-- POPUP (place here) -->
-<div id="popup" class="popup-container">
-  <div class="popup-inner">
-    <div class="popup-icon" id="popupIcon">🔒</div>
-    <div class="popup-text">
-      <span class="popup-title" id="popupTitle">Notice</span>
-      <span class="popup-sub" id="popupSub"></span>
-    </div>
-    <span class="popup-close" id="popupClose">✕</span>
-  </div>
-  <div class="popup-progress">
-    <div class="popup-progress-fill" id="popupFill"></div>
-  </div>
-</div>
-</body>
-</html>
- 
- <!-- JS TAG! -->
-  <script src="script.js"></script>
+.docsbtn {
+  border: 0.1px solid white;
+  color: white;
+  background-color: hsla(0, 0%, 5%, 1);
+}
 
-</body>
-</html>
+/* TABLET & DESKTOP — side by side */
+@media (min-width: 600px) {
+  .herobtndiv {
+    flex-direction: row;     /* pc: inline */
+  }
+
+  .herobtn, .docsbtn {
+    width: 250px;
+  }
+  .alive{
+    border-radius:10px;
+  
+  }
+}
+
+.popup-container {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(140%);
+  width: min(90%, 380px);
+  background: rgba(15, 15, 15, 0.95);
+  backdrop-filter: blur(16px);
+ 
