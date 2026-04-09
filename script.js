@@ -32,6 +32,18 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================
      NAV DIALOG SYSTEM
   ========================= */
+  // VIDEO HANDLER 
+  const video = document.querySelector('.intro');
+
+video.addEventListener('play', () => {
+  video.controls = false;
+});
+
+video.addEventListener('pause', () => {
+  video.controls = true;
+});
+  
+  //VIDEO HANDLER END
   const dialogs = document.querySelectorAll(".dialog");
 const fills   = document.querySelectorAll(".progress-fill");
 
@@ -343,4 +355,15 @@ if (subtxt) {
   });
 }
 
+/*==============================*/
+// VIDEO HANDLER
+const video = document.getElementById('myVideo');
+
+video.addEventListener('play', () => {
+  video.controls = false;
+});
+
+video.addEventListener('pause', () => {
+  video.controls = true;
+});
 /*==============================*/
