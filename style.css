@@ -1327,11 +1327,13 @@ html, body {
     height:20rem;
     
   }
-  .herosec{
-    padding-top:130px;
-  }
 }
 
+@media (min-width: 768px) {
+  .herosec {
+    padding-top: 120px;
+  }
+}
 
 /*=============================*/
 /* END OF ABT SEC*/
