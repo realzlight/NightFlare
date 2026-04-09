@@ -1295,6 +1295,9 @@ html, body {
   letter-spacing:-0.5px;
   font-family:"Inter",sans-serif;
   scale:1.2;
+
+  
+  
 }
 .abtsub{
   text-align:center;
@@ -1323,6 +1326,9 @@ html, body {
     width:65%;
     height:20rem;
     
+  }
+  .herosec{
+    padding-top:150px;
   }
 }
 
