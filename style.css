@@ -392,6 +392,14 @@ html, body {
   opacity: 1;
   pointer-events: all;
 }
+.fullmenu-content {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE/Edge */
+}
+
+.fullmenu-content::-webkit-scrollbar {
+  display: none;                /* Chrome/Safari */
+}
 
 /* =========================
    VIGNETTE / BORDER
