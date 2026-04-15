@@ -367,3 +367,6 @@ video.addEventListener('pause', () => {
   video.controls = true;
 });
 /*==============================*/
+
+
+  
