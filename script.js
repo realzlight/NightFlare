@@ -368,5 +368,87 @@ video.addEventListener('pause', () => {
 });
 /*==============================*/
 
+const softwares = [
+  {
+    name: "ArcOS",
+    sub: "Personal evolution system",
+    desc: "30-day AI-powered missions across Strength, Glow, Intelligence, and Mind. Level up in real life.",
+    tag: "Beta",
+    icon: "⚔️"
+  },
+  {
+    name: "DevOS",
+    sub: "Developer workspace",
+    desc: "Start with structure, build with a crew, meet other devs online, and ship faster than ever.",
+    tag: "Live",
+    icon: "⚡"
+  },
+  {
+    name: "EduOS",
+    sub: "Education infrastructure",
+    desc: "A full ecosystem for operating an entire school with AI-assisted teaching and analytics.",
+    tag: "Live",
+    icon: "🎓"
+  },
+  {
+    name: "Flare.AI",
+    sub: "Contextual intelligence",
+    desc: "The AI layer powering every NightFlare product. Reads your workflow. Acts before you ask.",
+    tag: "Soon",
+    icon: "🔮"
+  }
+];
 
-  
+function renderSwCards() {
+  const wrap = document.getElementById("swCardsWrap");
+  if (!wrap) return;
+
+  wrap.innerHTML = softwares.map((sw, i) => `
+    <div class="sw-card" style="--delay:${i * 0.08}s">
+      <div class="sw-card-top">
+        <div class="sw-card-icon">${sw.icon}</div>
+        <span class="sw-card-tag tag-${sw.tag.toLowerCase()}">${sw.tag}</span>
+      </div>
+      <div class="sw-card-body">
+        <h3 class="sw-card-name">${sw.name}</h3>
+        <p class="sw-card-sub">${sw.sub}</p>
+        <p class="sw-card-desc">${sw.desc}</p>
+      </div>
+      <div class="sw-card-footer">
+        <a href="#" class="sw-card-link">
+          Learn more
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2.5 6h7M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  `).join("");
+}
+
+renderSwCards();
+
+
+
+
+
+//================================
+document.querySelectorAll('.sw-faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.sw-faq-item');
+      const answer = item.querySelector('.sw-faq-answer');
+      const isOpen = item.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.sw-faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.sw-faq-answer').style.maxHeight = '0';
+      });
+
+      // Open clicked if it was closed
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
