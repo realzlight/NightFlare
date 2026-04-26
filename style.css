@@ -16,7 +16,31 @@ body{
   min-height:1000vh;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
 
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+
+  -webkit-mask-image: radial-gradient(
+    ellipse 60% 55% at 50% 50%,
+    black 0%,
+    black 20%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 60% 55% at 50% 50%,
+    black 0%,
+    black 20%,
+    transparent 100%
+  );
+}
 html, body {
   overflow-x: hidden;
   overflow-y: auto;   /* explicitly allow vertical scroll */
@@ -59,7 +83,7 @@ html, body {
 
 
 /* =========================
-   DIALOG BASE
+%DIALOG BASE
 ========================= */
 .dialog{
   position:absolute;
@@ -395,22 +419,8 @@ html, body {
 .fullmenu-content {
   scrollbar-width: none;        /* Firefox */
   -ms-overflow-style: none;     /* IE/Edge */
-}  <div class="abt-split-left">
-    <div class="abt-split-item">
-      <span class="abt-split-label">Who we are</span>
-      <p class="abt-split-sub">A parent ecosystem company.</p>
-    </div>
-    <div class="abt-split-line"></div>
-    <div class="abt-split-item">
-      <span class="abt-split-label">What we do</span>
-      <p class="abt-split-sub">Build interconnected software systems.</p>
-    </div>
-    <div class="abt-split-line"></div>
-    <div class="abt-split-item">
-      <span class="abt-split-label">Why it matters</span>
-      <p class="abt-split-sub">The world runs on fragmented tools. We fix that.</p>
-    </div>
-  </div>
+  
+}
 
 .fullmenu-content::-webkit-scrollbar {
   display: none;                /* Chrome/Safari */
@@ -604,7 +614,7 @@ html, body {
 .herosec {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: auto;
   overflow: hidden;
   padding-top: 182px; /* exact nav height: 35 + 67 */
   display: flex;
@@ -622,6 +632,7 @@ html, body {
   z-index: 1;
   pointer-events: none;
   overflow:hidden;
+
 }
 
 .herobox {
@@ -1451,20 +1462,21 @@ html, body {
   }
 
   /* BASE CELL */
-  .nf-cell {
-    background: #0f0f0f;
-    border: 0.5px solid rgba(255,255,255,0.07);
-    border-radius: 16px;
-    padding: 32px 28px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.3s ease, transform 0.3s ease;
-  }
-  .nf-cell:hover {
-    border-color: rgba(95,29,255,0.3);
-    transform: translateY(-2px);
-  }
+.nf-cell {
+  background: #0f0f0f;
+  border: 0.5px solid rgba(255,255,255,0.5);
+  border-radius: 16px;
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
 
+.nf-cell:hover {
+  border-color: rgba(95,29,255,0.5);
+  box-shadow: 0 0 20px rgba(95,29,255,0.08), inset 0 0 20px rgba(95,29,255,0.03);
+  transform: translateY(-2px);
+}
   /* HERO CELL — top left, tall */
   .nf-cell-hero {
     grid-column: 1;
@@ -1680,7 +1692,7 @@ html, body {
 
 /*=============================*/
 /* NF DIVIDER CSS */
-.nf-divider {
+/*.nf-divider {
   border: none;
   height: 1px;
   margin: 18px 0;
@@ -1696,7 +1708,7 @@ html, body {
 
   opacity: 0.7;
 }
-
+*/
 
 
 
@@ -2465,4 +2477,352 @@ body {
     line-height: 1.75;
     border-top: 1px solid rgba(255,255,255,0.04);
     padding-top: 16px;
+  }
+
+
+
+.herosec,
+.abtsec,
+.abtcontent,
+.nf-abt,
+.testimonials,
+.softwares-section,
+.sw-content,
+.sw-context,
+.sw-faq,
+.sw-docs-cta {
+  height: auto;
+  min-height: unset;
+}
+
+
+/* =========================
+CONTACT SEC
+========================= */
+  .nf-contact {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .nf-contact-eyebrow {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #9A6BFF;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nf-contact-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #5F1DFF;
+    box-shadow: 0 0 8px #5F1DFF;
+    flex-shrink: 0;
+  }
+
+  .nf-contact-title {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .nf-contact-sub {
+    font-family: "Inter", sans-serif;
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 300;
+    margin-bottom: 48px;
+  }
+
+  .nf-contact-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .nf-contact-card {
+    background: #0f0f0f;
+    border: 0.5px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 32px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .nf-contact-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 0% 50%, rgba(95,29,255,0.05), transparent 70%);
+    pointer-events: none;
+  }
+  .nf-contact-card:hover {
+    border-color: rgba(95,29,255,0.45);
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(95,29,255,0.08), inset 0 0 20px rgba(95,29,255,0.03);
+  }
+
+  .nf-contact-icon {
+    width: 46px; height: 46px;
+    border-radius: 12px;
+    background: #141414;
+    border: 0.5px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+  .nf-contact-card:hover .nf-contact-icon {
+    background: rgba(95,29,255,0.15);
+    border-color: rgba(95,29,255,0.35);
+  }
+
+  .nf-contact-icon svg {
+    width: 18px; height: 18px;
+    stroke: #555;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.3s ease;
+  }
+  .nf-contact-card:hover .nf-contact-icon svg {
+    stroke: #9A6BFF;
+  }
+
+  .nf-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .nf-contact-platform {
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #3a3a3a;
+  }
+
+  .nf-contact-handle {
+    font-family: "Inter", sans-serif;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: #ccc;
+    letter-spacing: -0.3px;
+    transition: color 0.3s ease;
+  }
+  .nf-contact-card:hover .nf-contact-handle {
+    color: #fff;
+  }
+
+  .nf-contact-arrow {
+    margin-left: auto;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.2;
+  }
+  .nf-contact-arrow svg {
+    width: 16px; height: 16px;
+    stroke: #9A6BFF;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .nf-contact-card:hover .nf-contact-arrow {
+    transform: translateX(4px);
+    opacity: 1;
+  }
+
+  @media (max-width: 600px) {
+    .nf-contact-cards { grid-template-columns: 1fr; }
+  }
+  
+  /*===========================*/
+  /*FOOTER*/
+  /*===========================*/
+    .nf-footer {
+    width: 100%;
+    background: #000;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+    padding: 64px 24px 32px;
+    font-family: "Inter", sans-serif;
+  }
+
+  .nf-footer-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* TOP ROW */
+  .nf-footer-top {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 0.5px solid rgba(255,255,255,0.05);
+  }
+
+  /* BRAND COL */
+  .nf-footer-brand {}
+
+  .nf-footer-logo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+
+  .nf-footer-tagline {
+    font-size: 0.8rem;
+    color: #3a3a3a;
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 200px;
+    margin-bottom: 24px;
+  }
+
+  .nf-footer-socials {
+    display: flex;
+    gap: 10px;
+  }
+
+  .nf-footer-social {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    background: #0f0f0f;
+    border: 0.5px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+  .nf-footer-social:hover {
+    border-color: rgba(95,29,255,0.4);
+    background: rgba(95,29,255,0.1);
+  }
+  .nf-footer-social svg {
+    width: 14px; height: 14px;
+    stroke: #555;
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.3s ease;
+  }
+  .nf-footer-social:hover svg {
+    stroke: #9A6BFF;
+  }
+
+  /* LINK COLS */
+  .nf-footer-col {}
+
+  .nf-footer-col-title {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #2a2a2a;
+    margin-bottom: 16px;
+  }
+
+  .nf-footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nf-footer-links a {
+    font-size: 0.82rem;
+    color: #444;
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.2s ease;
+  }
+  .nf-footer-links a:hover {
+    color: #fff;
+  }
+
+  /* BOTTOM ROW */
+  .nf-footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 28px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .nf-footer-copy {
+    font-size: 0.75rem;
+    color: #2a2a2a;
+    font-weight: 300;
+    letter-spacing: -0.1px;
+  }
+
+  .nf-footer-copy span {
+    color: #3a3a3a;
+  }
+
+  .nf-footer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: #2a2a2a;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+  .nf-footer-badge::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #5F1DFF;
+    box-shadow: 0 0 6px #5F1DFF;
+    animation: nf-ft-pulse 2s ease infinite;
+  }
+  @keyframes nf-ft-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .nf-footer-top {
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+    }
+    .nf-footer-brand {
+      grid-column: 1 / 3;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nf-footer-top {
+      grid-template-columns: 1fr;
+    }
+    .nf-footer-brand {
+      grid-column: 1;
+    }
   }
