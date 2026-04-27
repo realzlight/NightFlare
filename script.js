@@ -252,14 +252,6 @@ document.querySelector(".navbtn").addEventListener("click", () => {
   });
 });
 
-document.querySelector(".docsbtn").addEventListener("click", () => {
-  openPopup({
-    icon: "📃",
-    title: "Docs Loading...",
-    sub: "Optimizing Docs Page For Better Readibility",
-    duration: 3000
-  });
-});
 /*==============================*/
 /* TXT SPLIT + WAVE + SUBTXT   */
 /*==============================*/

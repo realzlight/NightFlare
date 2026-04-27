@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docs — NightFlare</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a0a;
+  --surface: #0f0f0f;
+  --surface2: #141414;
+  --border: rgba(255,255,255,0.06);
+  --border2: rgba(255,255,255,0.04);
+  --violet-core: #5F1DFF;
+  --violet-mid: #9A6BFF;
+  --violet-soft: #B58AFF;
+  --text: #f0f0f0;
+  --muted: #555;
+  --subtle: #2a2a2a;
+  --nav-width: 260px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  display: flex;
+}
+
+/* ── SIDEBAR ── */
+.docs-sidebar {
+  width: var(--nav-width);
+  min-height: 100vh;
+  background: #080808;
+  border-right: 0.5px solid var(--border);
+  position: fixed;
+  top: 0; left: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.docs-sidebar-header {
+  padding: 28px 24px 20px;
+  border-bottom: 0.5px solid var(--border2);
+}
+
+.docs-sidebar-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.docs-sidebar-version {
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.docs-nav {
+  padding: 20px 0 40px;
+  flex: 1;
+}
+
+.docs-nav-section {
+  margin-bottom: 28px;
+}
+
+.docs-nav-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--subtle);
+  padding: 0 24px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.docs-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 24px;
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.2s ease, background 0.2s ease;
+  border-left: 2px solid transparent;
+  margin-left: -0.5px;
+}
+.docs-nav-link:hover {
+  color: #ccc;
+  background: rgba(255,255,255,0.02);
+}
+.docs-nav-link.active {
+  color: var(--violet-mid);
+  border-left-color: var(--violet-core);
+  background: rgba(95,29,255,0.05);
+}
+
+.docs-nav-link .nav-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--subtle);
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+.docs-nav-link.active .nav-dot,
+.docs-nav-link:hover .nav-dot {
+  background: var(--violet-core);
+}
+
+/* ── MAIN CONTENT ── */
+.docs-main {
+  margin-left: var(--nav-width);
+  flex: 1;
+  max-width: 860px;
+  padding: 64px 60px 120px;
+}
+
+/* ── SECTION ── */
+.docs-section {
+  margin-bottom: 80px;
+  padding-top: 16px;
+}
+
+.docs-section-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--violet-core);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.docs-section-tag::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--violet-core);
+  box-shadow: 0 0 8px var(--violet-core);
+}
+
+.docs-h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.docs-h1 .accent {
+  background: linear-gradient(135deg, #fff 20%, var(--violet-soft) 60%, var(--violet-mid) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.docs-h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+  margin: 40px 0 12px;
+}
+
+.docs-h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--violet-soft);
+  letter-spacing: -0.2px;
+  margin: 24px 0 8px;
+}
+
+.docs-p {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.85;
+  font-weight: 300;
+  letter-spacing: -0.1px;
+  margin-bottom: 16px;
+}
+
+.docs-p strong {
+  color: rgba(255,255,255,0.75);
+  font-weight: 500;
+}
+
+.docs-p em {
+  color: var(--violet-mid);
+  font-style: italic;
+}
+
+/* LEAD TEXT */
+.docs-lead {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.75;
+  font-weight: 300;
+  letter-spacing: -0.2px;
+  margin-bottom: 32px;
+  padding-left: 16px;
+  border-left: 1.5px solid rgba(95,29,255,0.4);
+}
+
+/* DIVIDER */
+.docs-divider {
+  width: 100%;
+  height: 0.5px;
+  background: var(--border2);
+  margin: 48px 0;
+}
+
+/* CALLOUT */
+.docs-callout {
+  background: rgba(95,29,255,0.06);
+  border: 0.5px solid rgba(95,29,255,0.2);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 20px 0;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  font-weight: 300;
+}
+.docs-callout strong {
+  color: var(--violet-mid);
+  font-weight: 500;
+}
+
+/* PILL LIST */
+.docs-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+.docs-pill {
+  background: var(--surface2);
+  border: 0.5px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: #888;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+}
+.docs-pill.violet {
+  background: rgba(95,29,255,0.1);
+  border-color: rgba(95,29,255,0.25);
+  color: var(--violet-mid);
+}
+
+/* FEATURE CARDS */
+.docs-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 20px 0;
+}
+.docs-card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: border-color 0.3s ease;
+}
+.docs-card:hover {
+  border-color: rgba(95,29,255,0.3);
+}
+.docs-card-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e0e0e0;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.docs-card-title::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--violet-core);
+  box-shadow: 0 0 5px rgba(95,29,255,0.5);
+  flex-shrink: 0;
+}
+.docs-card-body {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* LIST */
+.docs-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0 20px;
+}
+.docs-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.87rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.6;
+  font-weight: 300;
+}
+.docs-list li::before {
+  content: '';
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--violet-core);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+.docs-list li strong {
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+}
+
+/* COMPARE TABLE */
+.docs-compare {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 13px;
+}
+.docs-compare th {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 10px 16px;
+  border-bottom: 0.5px solid var(--border);
+  text-align: left;
+}
+.docs-compare td {
+  padding: 12px 16px;
+  border-bottom: 0.5px solid var(--border2);
+  color: rgba(255,255,255,0.4);
+  font-weight: 300;
+  line-height: 1.5;
+}
+.docs-compare td:first-child {
+  color: #bbb;
+  font-weight: 400;
+}
+.docs-compare td.good {
+  color: var(--violet-mid);
+}
+.docs-compare tr:hover td {
+  background: rgba(255,255,255,0.01);
+}
+
+/* PRICING CARDS */
+.docs-pricing {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+}
+.docs-price-card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 20px;
+}
+.docs-price-card.featured {
+  border-color: rgba(95,29,255,0.35);
+  background: rgba(95,29,255,0.05);
+}
+.docs-price-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.docs-price-amount {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.docs-price-amount span {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.docs-price-desc {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+  font-weight: 300;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 0.5px solid var(--border2);
+}
+
+/* ROADMAP */
+.docs-roadmap {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 20px 0;
+  position: relative;
+}
+.docs-roadmap::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  bottom: 8px;
+  width: 0.5px;
+  background: var(--border);
+}
+.docs-roadmap-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 12px 0;
+  position: relative;
+}
+.docs-roadmap-dot {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 0.5px solid var(--border);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.docs-roadmap-dot.done {
+  background: rgba(95,29,255,0.2);
+  border-color: rgba(95,29,255,0.4);
+}
+.docs-roadmap-dot.done::after {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--violet-core);
+  box-shadow: 0 0 6px var(--violet-core);
+}
+.docs-roadmap-dot::after {
+  content: '';
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--subtle);
+}
+.docs-roadmap-content {}
+.docs-roadmap-phase {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #bbb;
+  margin-bottom: 2px;
+}
+.docs-roadmap-desc {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* MOBILE SIDEBAR TOGGLE */
+.docs-mobile-toggle {
+  display: none;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--violet-core);
+  border: none;
+  cursor: pointer;
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(95,29,255,0.4);
+}
+.docs-mobile-toggle svg {
+  width: 18px; height: 18px;
+  stroke: white;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+@media (max-width: 768px) {
+  .docs-sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  .docs-sidebar.open {
+    transform: translateX(0);
+  }
+  .docs-main {
+    margin-left: 0;
+    padding: 40px 24px 80px;
+  }
+  .docs-mobile-toggle {
+    display: flex;
+  }
+  .docs-cards,
+  .docs-pricing {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="docs-sidebar" id="sidebar">
+  <div class="docs-sidebar-header">
+    <a href="index.html" class="docs-sidebar-logo">NightFlare</a>
+    <div class="docs-sidebar-version">Documentation v1.0</div>
+  </div>
+  <nav class="docs-nav">
+
+    <div class="docs-nav-section">
+      <span class="docs-nav-label">NightFlare</span>
+      <a href="#nf-what" class="docs-nav-link active"><span class="nav-dot"></span>What is NightFlare</a>
+      <a href="#nf-vision" class="docs-nav-link"><span class="nav-dot"></span>The Vision</a>
+      <a href="#nf-products" class="docs-nav-link"><span class="nav-dot"></span>Products</a>
+      <a href="#nf-philosophy" class="docs-nav-link"><span class="nav-dot"></span>Philosophy</a>
+    </div>
+
+    <div class="docs-nav-section">
+      <span class="docs-nav-label">DevOS</span>
+      <a href="#devos-what" class="docs-nav-link"><span class="nav-dot"></span>What is DevOS</a>
+      <a href="#devos-problem" class="docs-nav-link"><span class="nav-dot"></span>The Problem</a>
+      <a href="#devos-pillars" class="docs-nav-link"><span class="nav-dot"></span>Four Pillars</a>
+      <a href="#devos-den" class="docs-nav-link"><span class="nav-dot"></span>Den</a>
+      <a href="#devos-vault" class="docs-nav-link"><span class="nav-dot"></span>Vault</a>
+      <a href="#devos-forge" class="docs-nav-link"><span class="nav-dot"></span>Forge</a>
+      <a href="#devos-realm" class="docs-nav-link"><span class="nav-dot"></span>Realm</a>
+      <a href="#devos-wave" class="docs-nav-link"><span class="nav-dot"></span>Wave Coding</a>
+      <a href="#devos-flare" class="docs-nav-link"><span class="nav-dot"></span>Flare.AI</a>
+      <a href="#devos-modes" class="docs-nav-link"><span class="nav-dot"></span>Modes & Pricing</a>
+      <a href="#devos-stack" class="docs-nav-link"><span class="nav-dot"></span>Tech Stack</a>
+      <a href="#devos-roadmap" class="docs-nav-link"><span class="nav-dot"></span>Roadmap</a>
+    </div>
+
+  </nav>
+</aside>
+
+<!-- MAIN -->
+<main class="docs-main">
+
+  <!-- ── NIGHTFLARE DOCS ── -->
+
+  <div class="docs-section" id="nf-what">
+    <div class="docs-section-tag">NightFlare</div>
+    <h1 class="docs-h1">What is <span class="accent">NightFlare?</span></h1>
+    <p class="docs-lead">A parent ecosystem company engineering next-generation software platforms across development, education, and personal evolution.</p>
+    <p class="docs-p">NightFlare is not a single product. It is a <strong>software ecosystem</strong> — a parent company that builds interconnected platforms designed to share state, context, and intelligence in real time. Every product NightFlare ships is a layer of a larger system, not an isolated tool.</p>
+    <p class="docs-p">Where other companies build apps, NightFlare builds ecosystems. The difference is fundamental — <em>ecosystems evolve, apps expire.</em></p>
+    <div class="docs-callout">
+      <strong>The NightFlare Identity —</strong> Forging Ecosystems That Feel Alive. Every product is designed to be structured, purposeful, and built for people who ship.
+    </div>
+  </div>
+
+  <div class="docs-section" id="nf-vision">
+    <div class="docs-section-tag">Vision</div>
+    <h2 class="docs-h1" style="font-size: clamp(1.6rem, 3vw, 2.2rem)">The Vision</h2>
+    <p class="docs-lead">The world runs on fragmented tools stitched together with hope. NightFlare is the answer to that fragmentation.</p>
+    <p class="docs-p">Most developers, creators, and learners juggle dozens of disconnected tools daily. Each tool is built in isolation — none talking to each other, none knowing what the others said, none sharing context. The result is <strong>constant context switching, lost ideas, and broken focus.</strong></p>
+    <p class="docs-p">NightFlare's vision is a connected software suite where every product shares intelligence. Your developer workplace knows what your learning system knows. Your AI assistant has full context across every layer of your work. Nothing is siloed. Nothing is repeated.</p>
+    <div class="docs-cards">
+      <div class="docs-card">
+        <div class="docs-card-title">Connected by Design</div>
+        <div class="docs-card-body">Every NightFlare product is built to share state and context with the others. Not bolted on — architected from day one.</div>
+      </div>
+      <div class="docs-card">
+        <div class="docs-card-title">Intelligence First</div>
+        <div class="docs-card-body">AI is not a feature layer. It is the ambient intelligence woven into every product from the foundation up.</div>
+      </div>
+      <div class="docs-card">
+        <div class="docs-card-title">Developer Focused</div>
+        <div class="docs-card-body">Every decision is made for people who build. No bloat, no generic UX, no compromises for non-technical users.</div>
+      </div>
+      <div class="docs-card">
+        <div class="docs-card-title">Alive, Not Static</div>
+        <div class="docs-card-body">Products that adapt, learn, and evolve with you. Not frozen in the version they shipped.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="docs-section" id="nf-products">
+    <div class="docs-section-tag">Products</div>
+    <h2 class="docs-h1" style="font-size: clamp(1.6rem, 3vw, 2.2rem)">The Systems</h2>
+    <p class="docs-lead">Each system solves a layer. Together, they create something alive.</p>
+    <ul class="docs-list">
+      <li><strong>DevOS</strong> — Developer headquarters. Plan, execute, and ship software in one structured, intelligent system. Launching December 1st, 2026.</li>
+      <li><strong>EduOS</strong> — Learning headquarters. Structured learning paths, AI tutoring, and personal knowledge management. Coming soon.</li>
+      <li><strong>ArcOS</strong> — Personal evolution system. Habits, goals, streaks, and life management in one cozy platform. In roadmap.</li>
+    </ul>
+    <div class="docs-callout">
+      <strong>Note —</strong> DevOS is NightFlare's first shipped product. All other systems are planned phases of the ecosystem. The order matters — developers first.
+    </div>
+  </div>
+
+  <div class="docs-section" id="nf-philosophy">
+    <div class="docs-section-tag">Philosophy</div>
+    <h2 class="docs-h1" style="font-size: clamp(1.6rem, 3vw, 2.2rem)">Core Philosophy</h2>
+    <p class="docs-p">NightFlare operates on a set of non-negotiable principles that govern every product decision:</p>
+    <ul class="docs-list">
+      <li><strong>Ecosystems over apps</strong> — We build systems that grow, not tools that stagnate.</li>
+      <li><strong>Structure over flexibility</strong> — Opinionated structure beats blank canvases for serious work.</li>
+      <li><strong>Developer first</strong> — Every product is designed for people who build, not generic users.</li>
+      <li><strong>Cozy and alive</strong> — Software should feel warm and dynamic, not cold and corporate.</li>
+      <li><strong>Speed over bloat</strong> — Fewer features done right beat a hundred features done mediocrely.</li>
+      <li><strong>AI as intelligence, not a gimmick</strong> — AI is woven into the foundation, not sprinkled on top.</li>
+    </ul>
+  </div>
+
+  <div class="docs-divider"></div>
+
+  <!-- ── DEVOS DOCS ── -->
+
+  <div class="docs-section" id="devos-what">
+    <div class="docs-section-tag">DevOS</div>
+    <h1 class="docs-h1"><span class="accent">DevOS</span> Documentation</h1>
+    <p class="docs-lead">A developer-first headquarters built by NightFlare. Not an IDE. Not a Git client. Not a code editor. A structured environment where developers plan, organize, and manage their entire software development process in one place.</p>
+    <p class="docs-p">DevOS replaces the fragmented developer workflow of jumping between Notion, Trello, GitHub Projects, and multiple AI tools — with <strong>one cozy, connected, intelligent headquarters.</strong></p>
+    <div class="docs-callout">
+      <strong>One Line —</strong> DevOS is a structured developer headquarters that replaces messy fragmented workflows with one cozy, connected, intelligent system for building software.
+    </div>
+  </div>
+
+  <div class="docs-section" id="devos-problem">
+    <div class="docs-section-tag">The Problem</div>
+    <h2 class="docs-h2">Why DevOS Exists</h2>
+    <p class="docs-p">Every developer faces the same chaos. The average developer runs 10–15 separate tools daily, none of which share context or intelligence:</p>
+    <div class="docs-pills">
+      <span class="docs-pill">VS Code</span>
+      <span class="docs-pill">GitHub</span>
+      <span class="docs-pill">Notion</span>
+      <span class="docs-pill">Trello</span>
+      <span class="docs-pill">ChatGPT</span>
+      <span class="docs-pill">Gemini</span>
+      <span class="docs-pill">Claude</span>
+      <span class="docs-pill">Perplexity</span>
+      <span class="docs-pill violet">None talk to each other</span>
+    </div>
+    <p class="docs-p">Constant context switching. Lost ideas. Broken focus. Disconnected tools that don't know what the others said. <strong>DevOS ends that fragmentation permanently.</strong></p>
+    <table class="docs-compare">
+      <thead>
+        <tr>
+          <th>Without DevOS</th>
+          <th>With DevOS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>15 apps, zero context sharing</td><td class="good">One headquarters, full context</td></tr>
+        <tr><td>AI that doesn't know your projects</td><td class="good">Flare.AI knows everything</td></tr>
+        <tr><td>Planning in Notion, tasks in Trello</td><td class="good">Vault handles both, natively</td></tr>
+        <tr><td>Code editor separate from planning</td><td class="good">Forge embedded inside DevOS</td></tr>
+        <tr><td>No personal space for life</td><td class="good">Realm for everything non-code</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="docs-section" id="devos-pillars">
+    <div class="docs-section-tag">Architecture</div>
+    <h2 class="docs-h2">The Four Pillars</h2>
+    <p class="docs-p">DevOS Solo is built around four core sections, each solving a distinct layer of a developer's life:</p>
+    <div class="docs-cards">
+      <div class="docs-card">
+        <div class="docs-card-title">Den</div>
+        <div class="docs-card-body">Your personal headquarters. Customizable, cozy, alive. Dashboard, AI assistant, habits, streaks, and Cozy Extensions.</div>
+      </div>
+      <div class="docs-card">
+        <div class="docs-card-title">Vault</div>
+        <div class="docs-card-body">Your complete planning system. Projects, Features, Tasks, Notes, and Decision Logs — all connected, nothing floating.</div>
+      </div>
+      <div class="docs-card">
+        <div class="docs-card-title">Forge</div>
+        <div class="docs-card-body">Your coding canvas. Monaco Editor embedded natively. Full VS Code experience inside DevOS with GitHub integration.</div>
+      </div>
+      <div class="docs-card">
+        <div class="docs-card-title">Realm</div>
+        <div class="docs-card-body">Your personal space. Habits, journal, goals, budget, health, reading list — life organized alongside your work.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="docs-section" id="devos-den">
+    <div class="docs-section-tag">Pillar 01</div>
+    <h2 class="docs-h2">Den — Your Headquarters</h2>
+    <p class="docs-lead">The Den is your personal home inside DevOS. Fully customizable, cozy, and alive. Every developer's Den looks and feels different.</p>
+    <p class="docs-p">The Den is more than a dashboard. It is the place you open every morning, the space that knows your current project, tracks your coding streak, and greets you with your Flare.AI assistant ready to work.</p>
+    <h3 class="docs-h3">Core Features</h3>
+    <ul class="docs-list">
+      <li><strong>Customizable home page</strong> — Templates and full layout control</li>
+      <li><strong>Flare.AI personal assistant</strong> — Renameable, custom profile picture, always context-aware</li>
+      <li><strong>Managing dashboard</strong> — Active projects, tasks, recent activity at a glance</li>
+      <li><strong>Mood based environment</strong> — Cozy, Flow, and Spark states that change the feel of your workspace</li>
+      <li><strong>Dev stats and streak system</strong> — Daily coding streaks, tasks shipped, commits this week</li>
+      <li><strong>Habit and personal tracker</strong> — Built directly into your headquarters</li>
+    </ul>
+    <h3 class="docs-h3">Cozy Extensions</h3>
+    <p class="docs-p">Just like VS Code has extensions, Den has Cozy Extensions — installable personalizations that make your headquarters yours:</p>
+    <ul class="docs-list">
+      <li><strong>Companions</strong> — Desk pets that react to what you're doing. Coding hard, they cheer. Chilling, they sleep.</li>
+      <li><strong>Ambience</strong> — Lo-fi rain, café background noise, Japanese town ambience, forest sounds</li>
+      <li><strong>Widgets</strong> — Analog or digital clock, live weather, Spotify player, Pomodoro timer, daily quote</li>
+      <li><strong>Productivity</strong> — Habit tracker widget, streak counter, daily task summary, coding hours counter</li>
+      <li><strong>Aesthetic</strong> — Custom cursor, seasonal themes, animated wallpapers, custom fonts</li>
+    </ul>
+    <h3 class="docs-h3">NightFlare Games</h3>
+    <p class="docs-p">Three games built into Den for those moments between deep work sessions:</p>
+    <ul class="docs-list">
+      <li><strong>Pixel Garden</strong> — Top down pixel farming. Plant seeds, harvest crops. Rare seeds unlock through coding streaks. Built with Phaser.js.</li>
+      <li><strong>Aquarium</strong> — Pure zen. Name your fish, feed them, watch them swim. Flare.AI occasionally references your fish by name.</li>
+      <li><strong>Midnight Café</strong> — Coming post-launch. Run a cozy late night café, serve customers, manage your space.</li>
+    </ul>
+  </div>
+
+  <div class="docs-section" id="devos-vault">
+    <div class="docs-section-tag">Pillar 02</div>
+    <h2 class="docs-h2">Vault — Your Planning System</h2>
+    <p class="docs-lead">DevOS's complete replacement for Notion — built specifically for developers. Everything is structured, connected, and organized. Nothing floats randomly.</p>
+    <h3 class="docs-h3">Projects</h3>
+    <p class="docs-p">The top level of everything. Each project is a complete workspace containing features, tasks, notes and file references. Your entire codebase life organized here.</p>
+    <h3 class="docs-h3">Features</h3>
+    <p class="docs-p">Break projects into features and modules. Auth System, Dashboard, API Layer — each feature links to its tasks, notes and files. Cozy readable syntax with proper readability and structure.</p>
+    <h3 class="docs-h3">Tasks</h3>
+    <p class="docs-p">Tasks are not generic todos. Each task is linked to a specific feature, optionally linked to file paths in your codebase, and includes full status and priority tracking.</p>
+    <div class="docs-pills">
+      <span class="docs-pill">Backlog</span>
+      <span class="docs-pill">In Progress</span>
+      <span class="docs-pill">Review</span>
+      <span class="docs-pill violet">Shipped</span>
+    </div>
+    <h3 class="docs-h3">Notes & Docs</h3>
+    <p class="docs-p">Write logic, decisions, and architecture documentation. Notes are linked to features and tasks — never floating randomly. Proper syntax highlighted code blocks included.</p>
+    <h3 class="docs-h3">Decision Log</h3>
+    <p class="docs-p">The section Notion completely misses for developers. Document why you made a technical decision. Track what changed and why. Full history so you never lose context on past decisions — linked to relevant features and tasks.</p>
+  </div>
+
+  <div class="docs-section" id="devos-forge">
+    <div class="docs-section-tag">Pillar 03</div>
+    <h2 class="docs-h2">Forge — Your Coding Canvas</h2>
+    <p class="docs-lead">Where you code. VS Code's engine — Monaco Editor — embedded directly inside DevOS. Full VS Code experience, fully embeddable, no restrictions.</p>
+    <ul class="docs-list">
+      <li><strong>Monaco Editor</strong> — The same engine that powers VS Code, embedded natively inside DevOS</li>
+      <li><strong>GitHub integration</strong> — Full version control inside your headquarters</li>
+      <li><strong>Customizable themes</strong> — Full VS Code extension system for canvas personalization</li>
+      <li><strong>Wave Coding</strong> — Flare.AI guides your coding session using the Wave Coding methodology</li>
+    </ul>
+  </div>
+
+  <div class="docs-section" id="devos-realm">
+    <div class="docs-section-tag">Pillar 04</div>
+    <h2 class="docs-h2">Realm — Your Personal Space</h2>
+    <p class="docs-lead">Your personal Notion inside DevOS. Completely separate from your developer work. Your life, organized alongside your career.</p>
+    <p class="docs-p">The Realm exists because a developer's life and work are deeply intertwined. DevOS serves both — zero fragmentation between who you are and what you build.</p>
+    <ul class="docs-list">
+      <li>Personal habit tracker</li>
+      <li>Daily journal</li>
+      <li>Life goals and milestones</li>
+      <li>Personal notes unrelated to code</li>
+      <li>Budget tracker</li>
+      <li>Reading list</li>
+      <li>Workout and health tracking</li>
+      <li>Random thoughts and ideas</li>
+      <li>Personal decision log</li>
+    </ul>
+  </div>
+
+  <div class="docs-section" id="devos-wave">
+    <div class="docs-section-tag">Methodology</div>
+    <h2 class="docs-h2">Wave Coding</h2>
+    <p class="docs-lead">DevOS's original development methodology. Created by NightFlare. The future of how serious developers build software in the AI era.</p>
+    <table class="docs-compare">
+      <thead>
+        <tr>
+          <th>Vibe Coding</th>
+          <th>Wave Coding</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>AI writes everything</td><td class="good">AI structures and guides</td></tr>
+        <tr><td>Developer becomes passive</td><td class="good">Developer stays in control</td></tr>
+        <tr><td>Code quality suffers</td><td class="good">Code quality is maintained</td></tr>
+        <tr><td>Developer learns nothing</td><td class="good">Junior developers actually learn</td></tr>
+        <tr><td>Senior devs go dull</td><td class="good">Senior developers stay sharp</td></tr>
+      </tbody>
+    </table>
+    <h3 class="docs-h3">How Wave Coding Works</h3>
+    <p class="docs-p">Flare.AI helps you structure your project before you write a single line of code. It suggests features, organizes tasks, and creates a clear development roadmap. Then you execute — with AI guidance alongside you, not writing for you.</p>
+    <p class="docs-p">You don't start coding from chaos. You start from a structured, clear plan. When you open the Forge you already know exactly what you're building and why. <em>Wave Coding is not a feature. It is a methodology.</em></p>
+  </div>
+
+  <div class="docs-section" id="devos-flare">
+    <div class="docs-section-tag">Intelligence Layer</div>
+    <h2 class="docs-h2">Flare.AI</h2>
+    <p class="docs-lead">Not a chatbot. Your personal developer AI that lives inside your headquarters and knows everything about your work.</p>
+    <p class="docs-p">Every other AI is isolated. ChatGPT doesn't know what Gemini told you. Claude doesn't know your projects. Perplexity doesn't know your decisions. <strong>Flare.AI knows everything</strong> — because it lives inside DevOS and sees your Vault, Forge, Realm, and Den with full context, always.</p>
+    <h3 class="docs-h3">Flare.AI Features</h3>
+    <ul class="docs-list">
+      <li><strong>Renameable</strong> — Call it whatever you want. Make it yours.</li>
+      <li><strong>Custom profile picture</strong> — Personalize your AI assistant's identity</li>
+      <li><strong>Project creation via conversation</strong> — Talk to it, it structures your project</li>
+      <li><strong>Wave Coding guide</strong> — Plans your build before you write a line</li>
+      <li><strong>Task suggestions</strong> — Based on your current feature and progress</li>
+      <li><strong>Pattern learning</strong> — Learns your work style over time</li>
+      <li><strong>Deep work suggestions</strong> — Recommends best focus windows based on your history</li>
+      <li><strong>Team intelligence</strong> — In Crew mode, becomes ambient team intelligence</li>
+    </ul>
+    <div class="docs-callout">
+      <strong>Powered by —</strong> Flare.AI runs on Gemini and Claude underneath — the best models combined into one personal developer intelligence layer.
+    </div>
+  </div>
+
+  <div class="docs-section" id="devos-modes">
+    <div class="docs-section-tag">Plans</div>
+    <h2 class="docs-h2">Modes & Pricing</h2>
+    <p class="docs-p">DevOS ships in two modes — Solo for individual developers, Crew for teams.</p>
+    <div class="docs-pricing">
+      <div class="docs-price-card">
+        <div class="docs-price-name">Solo Free</div>
+        <div class="docs-price-amount">₹0<span>/mo</span></div>
+        <div class="docs-price-desc">Limited Flare.AI tokens. Access to Den, Vault, Forge, Realm. Pixel Garden and Aquarium included. Enough to love it, not enough to live in it.</div>
+      </div>
+      <div class="docs-price-card featured">
+        <div class="docs-price-name">Solo Paid</div>
+        <div class="docs-price-amount">₹499<span>/mo</span></div>
+        <div class="docs-price-desc">Full Flare.AI token allowance. Everything unlocked. Full Den customization and all extensions. Priority support.</div>
+      </div>
+      <div class="docs-price-card">
+        <div class="docs-price-name">Crew</div>
+        <div class="docs-price-amount">₹2499<span>/mo</span></div>
+        <div class="docs-price-desc">Per team. Everything in Solo Paid plus unlimited Flare.AI, role based access, audit logs, and team intelligence.</div>
+      </div>
+    </div>
+    <h3 class="docs-h3">Crew Roles</h3>
+    <ul class="docs-list">
+      <li><strong>Architect</strong> — Plans features, sets structure</li>
+      <li><strong>Builder</strong> — Executes tasks, codes</li>
+      <li><strong>Reviewer</strong> — Reviews PRs, gives feedback</li>
+      <li><strong>Observer</strong> — Client or stakeholder, read only</li>
+    </ul>
+  </div>
+
+  <div class="docs-section" id="devos-stack">
+    <div class="docs-section-tag">Technical</div>
+    <h2 class="docs-h2">Tech Stack</h2>
+    <div class="docs-pills">
+      <span class="docs-pill violet">React.js</span>
+      <span class="docs-pill violet">Node.js + Express</span>
+      <span class="docs-pill violet">MongoDB</span>
+      <span class="docs-pill violet">Socket.io</span>
+      <span class="docs-pill violet">Monaco Editor</span>
+      <span class="docs-pill violet">Phaser.js</span>
+      <span class="docs-pill violet">JWT Auth</span>
+      <span class="docs-pill violet">Stripe</span>
+      <span class="docs-pill violet">GitHub API</span>
+      <span class="docs-pill violet">Gemini + Claude APIs</span>
+    </div>
+  </div>
+
+  <div class="docs-section" id="devos-roadmap">
+    <div class="docs-section-tag">Roadmap</div>
+    <h2 class="docs-h2">Future Roadmap</h2>
+    <div class="docs-roadmap">
+      <div class="docs-roadmap-item">
+        <div class="docs-roadmap-dot done"></div>
+        <div class="docs-roadmap-content">
+          <div class="docs-roadmap-phase">Phase 1 — Solo Launch</div>
+          <div class="docs-roadmap-desc">December 1st, 2026. Individual developer headquarters goes live.</div>
+        </div>
+      </div>
+      <div class="docs-roadmap-item">
+        <div class="docs-roadmap-dot"></div>
+        <div class="docs-roadmap-content">
+          <div class="docs-roadmap-phase">Phase 2 — Crew Launch</div>
+          <div class="docs-roadmap-desc">10 days after Solo. Team headquarters with roles, audit logs, and team Flare.AI.</div>
+        </div>
+      </div>
+      <div class="docs-roadmap-item">
+        <div class="docs-roadmap-dot"></div>
+        <div class="docs-roadmap-content">
+          <div class="docs-roadmap-phase">Phase 3 — Mobile DevOS</div>
+          <div class="docs-roadmap-desc">Den, Vault, and Realm on mobile. Stay connected to your headquarters anywhere.</div>
+        </div>
+      </div>
+      <div class="docs-roadmap-item">
+        <div class="docs-roadmap-dot"></div>
+        <div class="docs-roadmap-content">
+          <div class="docs-roadmap-phase">Phase 4 — Flare.AI Evolution</div>
+          <div class="docs-roadmap-desc">Custom trained model on developer workflows. No longer just Gemini and Claude underneath.</div>
+        </div>
+      </div>
+      <div class="docs-roadmap-item">
+        <div class="docs-roadmap-dot"></div>
+        <div class="docs-roadmap-content">
+          <div class="docs-roadmap-phase">Phase 5 — DevOS Marketplace</div>
+          <div class="docs-roadmap-desc">Community built extensions and templates. NightFlare takes 30% cut.</div>
+        </div>
+      </div>
+      <div class="docs-roadmap-item">
+        <div class="docs-roadmap-dot"></div>
+        <div class="docs-roadmap-content">
+          <div class="docs-roadmap-phase">Phase 6 — GitHub Deep Integration</div>
+          <div class="docs-roadmap-desc">PRs, branches, and commits visible and manageable directly inside Vault.</div>
+        </div>
+      </div>
+      <div class="docs-roadmap-item">
+        <div class="docs-roadmap-dot"></div>
+        <div class="docs-roadmap-content">
+          <div class="docs-roadmap-phase">Phase 7 — Enterprise Crew</div>
+          <div class="docs-roadmap-desc">Large organizations, advanced security, custom pricing.</div>
+        </div>
+      </div>
+      <div class="docs-roadmap-item">
+        <div class="docs-roadmap-dot"></div>
+        <div class="docs-roadmap-content">
+          <div class="docs-roadmap-phase">Phase 8 — Wave Coding Standard</div>
+          <div class="docs-roadmap-desc">Wave Coding becomes an industry standard methodology for AI-era development.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- MOBILE TOGGLE -->
+<button class="docs-mobile-toggle" id="mobileToggle">
+  <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+</button>
+
+<script>
+  // Mobile sidebar toggle
+  const toggle = document.getElementById('mobileToggle');
+  const sidebar = document.getElementById('sidebar');
+  toggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+  });
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('.docs-section');
+  const navLinks = document.querySelectorAll('.docs-nav-link');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + id) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Close sidebar on link click (mobile)
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>

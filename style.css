@@ -45,6 +45,22 @@ html, body {
   overflow-x: hidden;
   overflow-y: auto;   /* explicitly allow vertical scroll */
 }
+
+.nf-fade {
+  opacity: 0;
+  transform: translateY(32px) scale(0.98);
+  filter: blur(4px);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nf-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0px);
+}
 /* =========================
    NAV CONTAINER
 ========================= */

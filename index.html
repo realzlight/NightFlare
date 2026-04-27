@@ -122,7 +122,7 @@
     <div class="herobtndiv">
       
       <button class="herobtn">SneakPeak</button>
-      <button class="docsbtn">Browse Docs</button>
+    <button class="docsbtn"> <a href="https://nf-docs-theta.vercel.app/" style="text-decoration-color: white; color:white">Browse Docs</a></button>
     </div>
     
   <div class="herotickdiv">
@@ -710,7 +710,7 @@
 
 <div class="sw-docs-cta">
   <span class="sw-docs-text">Want to learn more about every feature in detail?</span>
-  <a href="#" class="sw-docs-btn">
+  <a href="https://nf-docs-theta.vercel.app/" class="sw-docs-btn">
     Read the Docs
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
       <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1025,6 +1025,30 @@
         }
       });
     });
+  });
+</script>
+
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const delay = el.dataset.delay || 0;
+        setTimeout(() => {
+          el.classList.add('nf-visible');
+        }, delay);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll(
+    '.nf-cell, .sw-card, .nf-contact-card, .sw-context-block, .sw-faq-item, .nf-footer-col, .nf-footer-brand, .card'
+  ).forEach((el, i) => {
+    el.classList.add('nf-fade');
+    el.dataset.delay = (i % 4) * 80;
+    observer.observe(el);
   });
 </script>
 </body>
