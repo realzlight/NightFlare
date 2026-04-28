@@ -11,6 +11,219 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"> 
+  
+  
+  
+  <style>
+  .nf-cta {
+    width: 100%;
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* BACKGROUND */
+  .nf-cta-bg {
+    position: absolute;
+    inset: 0;
+    background: #0a0a0a;
+    z-index: 0;
+  }
+
+  .nf-cta-bg::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 300px;
+    background: radial-gradient(ellipse at center,
+      rgba(95,29,255,0.18) 0%,
+      rgba(59,0,143,0.1) 35%,
+      transparent 70%
+    );
+    filter: blur(40px);
+    pointer-events: none;
+  }
+
+  .nf-cta-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, black 0%, black 20%, transparent 100%);
+    mask-image: radial-gradient(ellipse 60% 55% at 50% 50%, black 0%, black 20%, transparent 100%);
+    pointer-events: none;
+  }
+
+  /* TOP + BOTTOM FADE */
+  .nf-cta-fade-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, #0a0a0a, transparent);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .nf-cta-fade-bottom {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(to top, #000, transparent);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* CONTENT */
+  .nf-cta-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .nf-cta-eyebrow {
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #9A6BFF;
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nf-cta-eyebrow::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #5F1DFF;
+    box-shadow: 0 0 8px #5F1DFF;
+    animation: nf-cta-pulse 2s ease infinite;
+  }
+  @keyframes nf-cta-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.7); }
+  }
+
+  .nf-cta-heading {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2.5px;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  .nf-cta-heading em {
+    font-style: italic;
+    font-weight: 400;
+    background: linear-gradient(135deg, #fff 10%, #9A6BFF 50%, #5F1DFF 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: nf-cta-shift 5s ease infinite;
+  }
+  @keyframes nf-cta-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .nf-cta-sub {
+    font-family: "Inter", sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.35);
+    font-weight: 300;
+    line-height: 1.7;
+    letter-spacing: -0.2px;
+    margin-bottom: 40px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nf-cta-btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .nf-cta-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #5F1DFF;
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    letter-spacing: -0.1px;
+  }
+  .nf-cta-btn-primary:hover {
+    background: #7033ff;
+    box-shadow: 0 0 28px rgba(95,29,255,0.45);
+    transform: translateY(-1px);
+  }
+  .nf-cta-btn-primary svg {
+    transition: transform 0.2s ease;
+  }
+  .nf-cta-btn-primary:hover svg {
+    transform: translateX(3px);
+  }
+
+  .nf-cta-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: #888;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 12px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 0.5px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    letter-spacing: -0.1px;
+  }
+  .nf-cta-btn-secondary:hover {
+    border-color: rgba(255,255,255,0.2);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 480px) {
+    .nf-cta-btns {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .nf-cta-btn-primary,
+    .nf-cta-btn-secondary {
+      justify-content: center;
+    }
+  }
+  </style>
 </head>
 
 <body>
@@ -70,14 +283,14 @@
       <button class="menu-close" id="menuClose">✕</button>
       <ul class="menu-links">
         <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#abtsec">About</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#softwares">Softwares</a></li>
        <!-- <li><a href="#founders">Founders</a></li>-->
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#footer">Footer</a></li>
-        <li><a href="#docs">Docs</a></li>
+        <li><a href="https://nf-docs-theta.vercel.app/">Docs</a></li>
       </ul>
     </div>
   </div>
@@ -144,21 +357,38 @@
 
 </section>
   <!-- END HERO -->
-  
+ 
   <div class="nf-linkline"></div>
-  
+   <br>
+  <br>
+  <br>
   <!-- ABOUT VIDEO -->
-  <section class="abtsec">
+  <section class="abtsec" id="abtsec">
     <div class="abtcontent">
       <h1 class="abtheading">Beyond The Code</h1>
-      <p class="abtsub">What Are We Beyond the Code.</p>
+      <p class="abtsub">What Are We Beyond the Code. Discover more about us. This is who we are.</p>
+      
+
 <section class="nf-abt">
 
   <div class="nf-abt-eyebrow">About NightFlare</div>
+<br>
+  <div class="switch">
+  <input type="radio" name="toggle" id="btn1" checked>
+  <input type="radio" name="toggle" id="btn2">
 
+  <div class="buttons">
+    <label for="btn1">No More</label>
+    <label for="btn2">Say Less</label>
+    <div class="slider"></div>
+  </div>
+</div>
+<br>
+<br>
   <div class="nf-abt-grid">
 
     <!-- HERO CELL -->
+    <div class="Pair1">
     <div class="nf-cell nf-cell-hero">
       <div class="nf-hero-tag">Est. Now. Built for what's next.</div>
       <div>
@@ -168,40 +398,73 @@
           <em>Ecosystems.</em>
         </h2>
       </div>
-      <p class="nf-hero-body">
-        NightFlare engineers interconnected software systems — platforms that share state, context, and intelligence. We don't patch fragmented workflows. We replace them entirely.
-      </p>
+     
     </div>
-
+<br>
     <!-- STAT: Who -->
-    <div class="nf-cell nf-cell-stat">
-      <div class="nf-stat-label">Who we are</div>
+    
+    <div class="nf-cell nf-cell-hero">
+     <div class="nf-stat-label">Who we are</div>
       <div class="nf-stat-value">1<span>→∞</span></div>
       <div class="nf-stat-sub">A parent ecosystem company — one vision, expanding into every layer of how you build, learn, and grow.</div>
+     
     </div>
+</div>
 
-    <!-- PILLS: What we build -->
-    <div class="nf-cell nf-cell-pills">
-      <div class="nf-pill-label">What we build</div>
-      <div class="nf-pill"><span class="nf-pill-dot"></span>Developer Workplaces</div>
-      <div class="nf-pill"><span class="nf-pill-dot"></span>Structured Systems</div>
-      <div class="nf-pill"><span class="nf-pill-dot"></span>AI-Enhanced Tools</div>
-      <div class="nf-pill"><span class="nf-pill-dot"></span>Clean. Efficient. Alive.</div>
+<div class="Pair2">
+<div class="nf-cell nf-cell-hero">
+      <div class="nf-hero-tag">Everytime. A Banger. Only Next Gen!!</div>
+      <div>
+        <h2 class="nf-hero-heading">
+          Tend To Multiply<br>
+          Tend To Adapt<br>
+          <em>Tend To Build You</em>
+        </h2>
+      </div>
+     
     </div>
-
-    <!-- MANIFESTO CELL -->
-    <div class="nf-cell nf-cell-manifesto">
-      <div class="nf-manifesto-top">Our Belief</div>
-      <p class="nf-manifesto-text">
-        The world runs on <strong>fragmented tools</strong> stitched together with hope. We build the opposite — <em>software that thinks in systems</em>, not features. Every NightFlare product is designed to feel alive, interconnected, and quietly revolutionary.
-      </p>
-      <div class="nf-manifesto-line"></div>
-      <div class="nf-manifesto-footer">Efficient · Reliable · AI-Curated · Life-Changing</div>
+<br>
+  
+    <div class="nf-cell nf-cell-hero" id="pair2cards">
+     <div class="nf-stat-label">What We Solve Efficiently</div>
+      <div class="nf-stat-value">1x<span>→10x</span></div>
+      <div class="nf-stat-sub">We are especially forged to forge systems that give you 10x efficiency. Everything at one place is our core. We Focus on relaxing and no brainstorming approaches.</div>
+     
     </div>
-
+</div>
   </div>
+  
 
 </section>
+ <div class="sw-context">
+
+  <div class="sw-context-block">
+    <div class="sw-context-eyebrow">What is NightFlare</div>
+    <div class="sw-context-heading">Parent Company that Forge <span class="eco" style="font-size:1rem;font-family: 'Syne',sans-serif">Ecosystems</span> that feels alive.</div>
+    <p class="sw-context-body">
+      A parent ecosystem company engineering next-generation software platforms.
+We don't build apps. We forge ecosystems that feel alive.
+    </p>
+  </div>
+
+  <div class="sw-context-block">
+    <div class="sw-context-eyebrow">Why we exist?</div>
+    <div class="sw-context-heading">To ship softwares that feels alive!</div>
+    <p class="sw-context-body">
+      The world runs on fragmented tools stitched together with hope.
+We build the opposite — software that thinks in systems, not features.
+    </p>
+  </div>
+
+  <div class="sw-context-block">
+    <div class="sw-context-eyebrow">What We Believe</div>
+    <div class="sw-context-heading">Feeling Alive Over Brainstorming Softwares.</div>
+    <p class="sw-context-body">
+      Every product should feel cozy, intelligent, and quietly revolutionary.
+Structure over chaos. Connection over isolation. Always.
+    </p>
+  </div>
+  </div>
 <!-- SEMI END -->
 </div>
   <div class="introcont">
@@ -212,20 +475,24 @@
   </div>
 <br>
 <br>
-  
+  <br>
+<br>
+<br>
+<br>
+<br>
 <div class="nf-divider"></div>
   </section>
 
-
-
-
+<br>
+<br>
+<br>
  
  <!-- END OF ABOUT -->
  <!-- TESTIMONIALS -->
- <section class="testimonials">
+ <section class="testimonials" id="testimonials">
  <div class="abtcontent">
       <h1 class="testiheading">The Early Voices</h1>
-      <p class="testisub">What Are We Beyond the Code.</p>
+      <p class="testisub">Echoes of those who tried us. Listen to them better than anyone.</p>
  
 <div class="marquee">
 
@@ -577,10 +844,15 @@
 </section>
 <br>
 <br>
+<br>
+<br>
+<br>
  <!--END OF TESTIMONIALS -->
- 
+  <br>
+  <br>
+  <br>
  <!-- START OF SOFTWARES SEC -->
- <section class="softwares-section">
+ <section class="softwares-section" id="softwares">
  <h1 class="abtheading">The Systems</h1>
       <p class="abtsub">Each system solves a layer. Together, they create something alive.</p>
 
@@ -718,10 +990,20 @@
   </a>
 </div>
 <div class="nf-divider"></div>
-
+<br>
+<br>
+<br>
+<br>
+<br>
  </section>
  
- <section class="faq-section">
+ 
+ 
+  <br>
+  <br>
+  <br>  
+ 
+ <section class="faq-section" id="faq">
     <h1 class="abtheading">Questions, answered.</h1>
       <p class="abtsub">We figured you'd ask. Here's the truth.</p>
       
@@ -842,17 +1124,33 @@
 
   </div>
 </div>
-   
+<br>
+<br>
+   <div class="sw-docs-cta">
+  <span class="sw-docs-text">Want to know more? </span>
+  <a href="https://nf-docs-theta.vercel.app/" class="sw-docs-btn">
+    Reach out!
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</div>
+
    <br>
    <br>
    <div class="nf-divider"></div>
    <br>
    <br>
+   <br>
+   <br>
+   <br>
     </section>
     
-    
-  <section class="contact-section">
-          <h1 class="abtheading">Let's Talk</h1>
+     <br>
+  <br>
+  <br>
+  <section class="contact-section" id="contact">
+          <h1 class="abtheading">Let's Connect.</h1>
       <p class="abtsub">Drop us a message. We don't ghost.</p>
       <br>
       <br>
@@ -903,13 +1201,47 @@
     
     <br>
     <br>
-  
+  <br>
+  <br>
+  <br>
   </section>
-  
-  
+   <br>
+  <br>
+  <br>
+<div class="nf-linkline"></div>
+<section class="nf-cta">
+  <div class="nf-cta-bg"></div>
+  <div class="nf-cta-fade-top"></div>
+  <div class="nf-cta-fade-bottom"></div>
+
+  <div class="nf-cta-inner">
+    <div class="nf-cta-eyebrow">NightFlare · DevOS</div>
+    <h2 class="nf-cta-heading">
+      Stop juggling.<br>
+      <em>Start building.</em>
+    </h2>
+    <p class="nf-cta-sub">
+      One headquarters. Everything connected. Your AI knows everything. Your workplace feels alive.
+    </p>
+    <div class="nf-cta-btns">
+      <a href="#" class="nf-cta-btn-primary">
+        Start Building
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 7h10M8 3l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="docs.html" class="nf-cta-btn-secondary">
+        Browse Docs
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
   
 
-<footer class="nf-footer" id="footer">
+<footer class="nf-footer" id="footer" style="background-color:#0d0d0d;">
   <div class="nf-footer-inner">
 
     <div class="nf-footer-top">
@@ -1050,6 +1382,32 @@
     el.dataset.delay = (i % 4) * 80;
     observer.observe(el);
   });
+</script>
+
+
+<script>
+const btn1 = document.getElementById("btn1");
+const btn2 = document.getElementById("btn2");
+
+const pair1 = document.querySelector(".Pair1");
+const pair2 = document.querySelector(".Pair2");
+
+function updateView() {
+  if (btn1.checked) {
+    pair1.style.display = "block";
+    pair2.style.display = "none";
+  } else if (btn2.checked) {
+    pair1.style.display = "none";
+    pair2.style.display = "block";
+  }
+}
+
+// attach listeners
+btn1.addEventListener("change", updateView);
+btn2.addEventListener("change", updateView);
+
+// initialize on load
+updateView();
 </script>
 </body>
 </html>
